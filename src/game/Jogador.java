@@ -1,4 +1,9 @@
 package game;
 
-public class Jogador {
+import game.baralho.Deck;
+
+public class Jogador{
+    private Deck deck;
+
+
 }

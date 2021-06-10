@@ -1,12 +1,11 @@
-package game.tipoCarta;
+package game.baralho.tipoCarta;
 
-import game.Carta;
+import game.baralho.Carta;
 import game.Mana;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Seguidor extends Carta{
+public class Feitico extends Carta{
     private List<Mana> mana = new ArrayList();
-
 }

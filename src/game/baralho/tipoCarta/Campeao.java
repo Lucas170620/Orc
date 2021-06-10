@@ -1,6 +1,6 @@
-package game.tipoCarta;
+package game.baralho.tipoCarta;
 
-import game.Carta;
+import game.baralho.Carta;
 import game.Mana;
 
 import java.util.ArrayList;
