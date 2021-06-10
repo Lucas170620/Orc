@@ -8,5 +8,4 @@ import java.util.List;
 
 public class Campeao extends Carta {
     private List<Mana> mana = new ArrayList();
-    private String orc;
 }
