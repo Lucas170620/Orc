@@ -7,6 +7,5 @@ public class Runner{
         //g.start();
         Jogador jogador = new Jogador();
         jogador.comecarJogo();
-
     }
 }

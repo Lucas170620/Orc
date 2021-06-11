@@ -3,6 +3,7 @@ package game;
 import game.baralho.Carta;
 import game.baralho.Deck;
 import game.elementosMesa.Mao;
+import game.enumeradores.PosicaoDeCombate;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -11,9 +12,25 @@ public class Jogador{
     private Scanner leitor = new Scanner(System.in);
     private Deck deck = new Deck();
     private Mao mao = new Mao();
+    private PosicaoDeCombate posicaoDeCombate;
 
     public Jogador(){
         deckPrincpal();
+    }
+
+    public void altararPosicaoDeCombate(){
+        switch (posicaoDeCombate){
+            case ATACANTE:
+                posicaoDeCombate = PosicaoDeCombate.DEFENSOR;
+                break;
+            case DEFENSOR:
+                posicaoDeCombate = PosicaoDeCombate.ATACANTE;
+                break;
+        }
+    }
+
+    public void altararPosicaoDeCombate(PosicaoDeCombate posicaoDeCombate){
+        this.posicaoDeCombate = posicaoDeCombate;
     }
 
     void deckPrincpal(){
