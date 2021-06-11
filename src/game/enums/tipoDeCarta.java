@@ -1,4 +1,4 @@
-package game.enumeradores;
+package game.enums;
 
 public enum tipoDeCarta{
     CAMPEAO,

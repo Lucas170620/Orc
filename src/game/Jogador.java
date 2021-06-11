@@ -3,9 +3,8 @@ package game;
 import game.baralho.Carta;
 import game.baralho.Deck;
 import game.elementosMesa.Mao;
-import game.enumeradores.PosicaoDeCombate;
+import game.enums.PosicaoDeCombate;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Jogador{
