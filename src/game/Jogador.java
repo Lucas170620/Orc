@@ -66,13 +66,27 @@ public class Jogador{
         int quantidade;
         deck.embaralharDeck();
         mao.maoInicial(deck);
+        mostrarResumoJogador();
         System.out.println("Deseja trocar cartas?\n1-Sim\nQualquer outro botão para não" );
         int verficador = leitor.nextInt();
         if (verficador == 1) {
             System.out.println("Quantas Cartas?");
             quantidade = leitor.nextInt();
-            mao.alterarCartas(deck, quantidade);
-            deck.embaralharDeck();
+             do{
+                if (quantidade >= 0 && quantidade <= 4) {
+                    mao.alterarCartas(deck, quantidade);
+                    deck.embaralharDeck();
+                    mostrarResumoJogador();
+                } else{
+                    System.out.println("Número inválido");
+                    quantidade = leitor.nextInt();
+                }
+            }while(quantidade < 0 && quantidade>4);
         }
+    }
+
+    public void mostrarResumoJogador(){
+        mao.mostrarMao();
+        deck.mostrarDeck();
     }
 }

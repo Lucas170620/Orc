@@ -25,4 +25,13 @@ public class Deck{
             System.out.println("Deck-out");
         }
     }
+
+    public void mostrarDeck(){
+        System.out.println("-----");
+        System.out.println("Cartas no Deck:");
+        for (Carta carta:cartas){
+            System.out.println(carta.getNome());
+        }
+
+    }
 }

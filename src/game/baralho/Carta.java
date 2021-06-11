@@ -6,4 +6,8 @@ public class Carta{
     public Carta(String nome){
         this.nome = nome;
     }
+
+    public String getNome() {
+        return nome;
+    }
 }
