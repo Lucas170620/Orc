@@ -9,4 +9,7 @@ import java.util.List;
 public class Campeao extends Carta{
     private List<Mana> mana = new ArrayList();
 
+    public Campeao(String nome) {
+        super(nome);
+    }
 }

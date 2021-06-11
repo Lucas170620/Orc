@@ -9,4 +9,7 @@ import java.util.List;
 public class Seguidor extends Carta{
     private List<Mana> mana = new ArrayList();
 
+    public Seguidor(String nome) {
+        super(nome);
+    }
 }
