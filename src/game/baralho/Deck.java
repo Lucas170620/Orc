@@ -17,7 +17,12 @@ public class Deck{
     }
 
     public void topDeck(List<Carta> mao) {
-        mao.add(cartas.get(0));
-        cartas.remove(0);
+        if(!cartas.isEmpty()){
+            mao.add(cartas.get(0));
+            cartas.remove(0);
+        }
+        else{
+            System.out.println("Deck-out");
+        }
     }
 }

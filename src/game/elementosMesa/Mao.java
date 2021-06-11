@@ -13,4 +13,12 @@ public class Mao{
     public void maoInicial(Deck deck){
         for (int i = 0 ; i < 4; i++) deck.topDeck(mao);
     }
+
+    public void alterarCartas(Deck deck, int quantidade){
+        for(int i = 0 ; i < quantidade ;i++){
+            deck.adicionarCarta(mao.get(i));
+            mao.remove(i);
+            deck.topDeck(mao);
+        }
+    }
 }

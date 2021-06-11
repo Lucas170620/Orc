@@ -5,8 +5,10 @@ import game.baralho.Deck;
 import game.elementosMesa.Mao;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Jogador{
+    private Scanner leitor = new Scanner(System.in);
     private Deck deck = new Deck();
     private Mao mao = new Mao();
 
@@ -42,10 +44,18 @@ public class Jogador{
         deck.adicionarCarta(saw);
         deck.adicionarCarta(saw);
     }
+
     public void comecarJogo(){
+        int quantidade;
         deck.embaralharDeck();
         mao.maoInicial(deck);
+        System.out.println("Deseja trocar cartas?\n1-Sim\nQualquer outro botão para não" );
+        int verficador = leitor.nextInt();
+        if (verficador == 1) {
+            System.out.println("Quantas Cartas?");
+            quantidade = leitor.nextInt();
+            mao.alterarCartas(deck, quantidade);
+            deck.embaralharDeck();
+        }
     }
-
-
 }
