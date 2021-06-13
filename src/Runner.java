@@ -1,4 +1,3 @@
-import game.Game;
 import game.Jogador;
 
 public class Runner{

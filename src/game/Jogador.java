@@ -2,7 +2,9 @@ package game;
 
 import game.baralho.Carta;
 import game.baralho.Deck;
+import game.elementosMesa.CampoDeBatalha;
 import game.elementosMesa.Mao;
+import game.elementosMesa.ZonaMonstro;
 import game.enums.PosicaoDeCombate;
 
 import java.util.Scanner;
@@ -12,6 +14,8 @@ public class Jogador{
     private Deck deck = new Deck();
     private Mao mao = new Mao();
     private PosicaoDeCombate posicaoDeCombate;
+    private ZonaMonstro zonaMostro = new ZonaMonstro();
+    private CampoDeBatalha campoDeBatalha = new CampoDeBatalha();
 
     public Jogador(){
         deckPrincpal();
@@ -32,7 +36,7 @@ public class Jogador{
         this.posicaoDeCombate = posicaoDeCombate;
     }
 
-    void deckPrincpal(){
+    public void deckPrincpal(){
         Carta hero = new Carta("Teferi");
         Carta narset = new Carta("Narset");
         Carta counter = new Carta("memory lapse");
@@ -59,6 +63,10 @@ public class Jogador{
         deck.adicionarCarta(saw);
         deck.adicionarCarta(saw);
         deck.adicionarCarta(saw);
+    }
+
+    public void comprarCarta(){
+        mao.comprar(deck);
     }
 
     public void comecarJogo(){

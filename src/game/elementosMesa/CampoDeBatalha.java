@@ -1,4 +1,4 @@
 package game.elementosMesa;
 
-public class CampoDeBatalha {
+public class CampoDeBatalha{
 }

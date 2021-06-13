@@ -29,4 +29,8 @@ public class Mao{
             System.out.println(carta.getNome());
         }
     }
+
+    public void comprar(Deck deck) {
+        deck.topDeck(mao);
+    }
 }
