@@ -7,9 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Seguidor extends Carta{
-    private List<Mana> mana = new ArrayList();
+    private Mana mana = new Mana();
+    private int vida ;
+    private int poder;
 
-    public Seguidor(String nome) {
+    public Seguidor(String nome,int poder , int vida) {
         super(nome);
+        this.vida = vida;
+        this.poder = poder;
     }
+
 }

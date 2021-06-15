@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Feitico extends Carta{
-    private List<Mana> mana = new ArrayList();
+    private Mana mana = new Mana();
 
     public Feitico(String nome) {
         super(nome);

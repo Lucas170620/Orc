@@ -23,6 +23,14 @@ public class Jogador{
         deckPrincpal();
     }
 
+    public void sofrerDano(int dano){
+        nexus.sofrerDano(dano);
+    }
+
+    public void curarVida(int vidaCurada){
+        nexus.recuperarVida(vidaCurada);
+    }
+
     public void altararPosicaoDeCombate(){
         switch (posicaoDeCombate){
             case ATACANTE:
