@@ -13,8 +13,10 @@ public class Game {
 
     private void drawBoard(){
     }
+
     private void readInput(){
     }
+
     private void updateBoard(){
     }
 }

@@ -4,12 +4,14 @@ import game.baralho.Carta;
 import game.baralho.Deck;
 import game.elementosMesa.CampoDeBatalha;
 import game.elementosMesa.Mao;
+import game.elementosMesa.Nexus;
 import game.elementosMesa.ZonaMonstro;
 import game.enums.PosicaoDeCombate;
 
 import java.util.Scanner;
 
 public class Jogador{
+    private Nexus nexus = new Nexus();
     private Scanner leitor = new Scanner(System.in);
     private Deck deck = new Deck();
     private Mao mao = new Mao();
@@ -65,8 +67,8 @@ public class Jogador{
         deck.adicionarCarta(saw);
     }
 
-    public void comprarCarta(){
-        mao.comprar(deck);
+    public void topDeckCarta(){
+        mao.topDeck(deck);
     }
 
     public void comecarJogo(){

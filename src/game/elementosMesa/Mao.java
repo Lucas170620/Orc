@@ -30,7 +30,7 @@ public class Mao{
         }
     }
 
-    public void comprar(Deck deck) {
+    public void topDeck(Deck deck) {
         deck.topDeck(mao);
     }
 }

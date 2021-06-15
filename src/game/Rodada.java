@@ -11,7 +11,7 @@ public class Rodada{
     public void novaRodada(){
         jogador1.altararPosicaoDeCombate();
         jogador2.altararPosicaoDeCombate();
-        jogador1.comprarCarta();
-        jogador2.comprarCarta();
+        jogador1.topDeckCarta();
+        jogador2.topDeckCarta();
     }
 }
