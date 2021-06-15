@@ -1,6 +1,6 @@
 package game.enums;
 
-public enum TRACOS{
+public enum Tracos {
     ATAQUE_DUPLO,
     ELUSIVO,
     FURIA

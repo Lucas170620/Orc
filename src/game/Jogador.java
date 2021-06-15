@@ -6,8 +6,10 @@ import game.elementosMesa.CampoDeBatalha;
 import game.elementosMesa.Mao;
 import game.elementosMesa.Nexus;
 import game.elementosMesa.ZonaMonstro;
+import game.enums.Efeitos;
 import game.enums.PosicaoDeCombate;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Jogador{
@@ -106,4 +108,40 @@ public class Jogador{
         mao.mostrarMao();
         deck.mostrarDeck();
     }
+
+    /*
+    public  void aplicarEfeitos(Carta carta){
+        List<Efeitos> efeitos = carta.realizarEfeito();
+        for (Efeitos efeito:efeitos){
+            switch (efeito){
+                case ZERA_PODER:
+                    break;
+                case ATACA_TODOS:
+                    break;
+                case ATACAR_O_NEXUS:
+                    break;
+                case DANO_N_AO_NEXUS:
+                    break;
+                case COMBATE_IMEDIATO:
+                    break;
+                case CURAR_UNIDADE_ALIADA:
+                    break;
+                case FORTALECER_UMA_UNIDADE:
+                    break;
+                case FORTACELER_UNIDADES_ALIADAS:
+                    break;
+                case AO_SER_DESTUIDO_COMPRA_CARTA:
+                    break;
+                case DESTRUIR_MOSTRO_E_COLOCAR_NA_MAO:
+                    break;
+                case CRIA_BARREIRA_DE_PROTECAO_DE_DANO:
+                    break;
+                case DOBRAR_ATAQUE_E_DEFESA_UNIDADE_ALIADA:
+                    break;
+            }
+
+        }
+    }
+    */
+    //discutir aplicar efeitos
 }
