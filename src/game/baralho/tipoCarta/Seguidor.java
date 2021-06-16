@@ -31,4 +31,9 @@ public class Seguidor extends Carta{
         return poder;
     }
 
+    @Override
+    public boolean ehMonstro() {
+        return true;
+    }
+
 }

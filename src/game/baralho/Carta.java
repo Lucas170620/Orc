@@ -19,4 +19,6 @@ public abstract class Carta{
     public int mostrarPoder() {
         return 0;
     }
+
+    public abstract boolean ehMonstro();
 }

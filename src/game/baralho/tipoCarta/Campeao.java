@@ -31,4 +31,9 @@ public class Campeao extends Carta{
         return poder;
     }
 
+    @Override
+    public boolean ehMonstro() {
+        return true;
+    }
+
 }
