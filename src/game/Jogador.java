@@ -54,26 +54,36 @@ public class Jogador{
 
     public void deckPrincpal(){
         Carta carta = CartaFactory.criarCarta(TipoDeCarta.CAMPEAO,"Garen",5,5,5);
+        carta.adicionarEfeito(Efeitos.CURAR_UNIDADE_ALIADA,0,0);
         deck.adicionarCarta(carta);
         carta = CartaFactory.criarCarta(TipoDeCarta.SEGUIDOR,"Tiana",8,7,7);
+        carta.adicionarEfeito(Efeitos.ATACAR_O_NEXUS,0,0);
         deck.adicionarCarta(carta);
         carta = CartaFactory.criarCarta(TipoDeCarta.SEGUIDOR,"Vanguarda",4,3,3);
+        carta.adicionarEfeito(Efeitos.FORTACELER_UNIDADES_ALIADAS,1,1);
         deck.adicionarCarta(carta);
         carta = CartaFactory.criarCarta(TipoDeCarta.SEGUIDOR,"Duelista",3,3,2);
+        carta.adicionarEfeito(Efeitos.AO_SER_DESTUIDO_COMPRA_CARTA,0,0);
         deck.adicionarCarta(carta);
         carta = CartaFactory.criarCarta(TipoDeCarta.SEGUIDOR,"Defensor",2,2,2);
         deck.adicionarCarta(carta);
         carta = CartaFactory.criarCarta(TipoDeCarta.SEGUIDOR,"Poro",1,2,1);
         deck.adicionarCarta(carta);
         carta = CartaFactory.criarCarta(TipoDeCarta.SEGUIDOR,"Poro Defensor",1,1,2);
+        carta.adicionarEfeito(Efeitos.AO_SER_DESTUIDO_COMPRA_CARTA,0,0);
         deck.adicionarCarta(carta);
         carta = CartaFactory.criarCarta(TipoDeCarta.FEITICO,"Julgamento",8,0,0);
+        carta.adicionarEfeito(Efeitos.ATACA_TODOS,0,0);
         deck.adicionarCarta(carta);
         carta = CartaFactory.criarCarta(TipoDeCarta.FEITICO,"Valor Redobrado",6,0,0);
+        carta.adicionarEfeito(Efeitos.CURAR_UNIDADE_ALIADA,0,0);
+        carta.adicionarEfeito(Efeitos.DOBRAR_ATAQUE_E_DEFESA_UNIDADE_ALIADA,0,0);
         deck.adicionarCarta(carta);
         carta = CartaFactory.criarCarta(TipoDeCarta.FEITICO,"Golpe Certeiro",1,0,0);
+        carta.adicionarEfeito(Efeitos.FORTALECER_UMA_UNIDADE,1,1);
         deck.adicionarCarta(carta);
         carta = CartaFactory.criarCarta(TipoDeCarta.FEITICO," Combate um-a-um",2,0,0);
+        carta.adicionarEfeito(Efeitos.COMBATE_IMEDIATO,0,0);
         deck.adicionarCarta(carta);
 
     }

@@ -11,7 +11,7 @@ public class Traco {
         this.traco = traco;
     }
 
-    Traco(Tracos traco, int n , int m){
+    public Traco(Tracos traco, int n, int m){
         this.traco = traco;
         this.n = n ;
         this.m = m ;

@@ -1,11 +1,9 @@
 package game.baralho;
 
-import game.baralho.tipoCarta.Campeao;
+import game.baralho.tipoCarta.montro.Campeao;
 import game.baralho.tipoCarta.Feitico;
-import game.baralho.tipoCarta.Seguidor;
+import game.baralho.tipoCarta.montro.Seguidor;
 import game.enums.TipoDeCarta;
-
-import java.util.List;
 
 public class CartaFactory{
     public static Carta criarCarta(TipoDeCarta tipoDeCarta,String nome,int mana,int poder , int vida){
