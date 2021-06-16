@@ -1,6 +1,6 @@
 package game.enums;
 
-public enum Efeitos{
+public enum TodosEfeitos {
     FORTACELER_UNIDADES_ALIADAS,
     FORTALECER_UMA_UNIDADE,
     DESTRUIR_MOSTRO_E_COLOCAR_NA_MAO,

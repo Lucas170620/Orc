@@ -1,6 +1,6 @@
 package game.enums;
 
-public enum tipoDeCarta{
+public enum TipoDeCarta {
     CAMPEAO,
     SEGUIDOR,
     FEITICO

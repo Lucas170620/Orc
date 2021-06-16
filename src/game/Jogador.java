@@ -6,7 +6,7 @@ import game.elementosMesa.CampoDeBatalha;
 import game.elementosMesa.Mao;
 import game.elementosMesa.Nexus;
 import game.elementosMesa.ZonaMonstro;
-import game.enums.Efeitos;
+import game.enums.TodosEfeitos;
 import game.enums.PosicaoDeCombate;
 
 import java.util.List;
@@ -20,6 +20,7 @@ public class Jogador{
     private PosicaoDeCombate posicaoDeCombate;
     private ZonaMonstro zonaMostro = new ZonaMonstro();
     private CampoDeBatalha campoDeBatalha = new CampoDeBatalha();
+    private Jogador adversario;
 
     public Jogador(){
         deckPrincpal();
@@ -49,39 +50,14 @@ public class Jogador{
     }
 
     public void deckPrincpal(){
-        Carta hero = new Carta("Teferi");
-        Carta narset = new Carta("Narset");
-        Carta counter = new Carta("memory lapse");
-        Carta brain = new Carta("brainstorm");
-        Carta saw= new Carta("Saw it crow");
-
-        deck.adicionarCarta(hero);
-        deck.adicionarCarta(hero);
-        deck.adicionarCarta(hero);
-        deck.adicionarCarta(hero);
-        deck.adicionarCarta(narset);
-        deck.adicionarCarta(narset);
-        deck.adicionarCarta(narset);
-        deck.adicionarCarta(narset);
-        deck.adicionarCarta(brain);
-        deck.adicionarCarta(brain);
-        deck.adicionarCarta(brain);
-        deck.adicionarCarta(brain);
-        deck.adicionarCarta(counter);
-        deck.adicionarCarta(counter);
-        deck.adicionarCarta(counter);
-        deck.adicionarCarta(counter);
-        deck.adicionarCarta(saw);
-        deck.adicionarCarta(saw);
-        deck.adicionarCarta(saw);
-        deck.adicionarCarta(saw);
     }
 
     public void topDeckCarta(){
         mao.topDeck(deck);
     }
 
-    public void comecarJogo(){
+    public void comecarJogo(Jogador adversario){
+        this.adversario = adversario;
         int quantidade;
         deck.embaralharDeck();
         mao.maoInicial(deck);
@@ -109,18 +85,20 @@ public class Jogador{
         deck.mostrarDeck();
     }
 
-    /*
-    public  void aplicarEfeitos(Carta carta){
-        List<Efeitos> efeitos = carta.realizarEfeito();
-        for (Efeitos efeito:efeitos){
-            switch (efeito){
+    private  void aplicarEfeitos(Carta carta){
+        List<Efeito> efeitos = carta.realizarEfeito();
+        for (Efeito efeito:efeitos){
+            TodosEfeitos resolverEfeito = efeito.resolverEfeito();
+            switch (resolverEfeito){
                 case ZERA_PODER:
                     break;
                 case ATACA_TODOS:
                     break;
                 case ATACAR_O_NEXUS:
+                    adversario.sofrerDano(carta.mostrarPoder());
                     break;
                 case DANO_N_AO_NEXUS:
+                    adversario.sofrerDano(efeito.n());
                     break;
                 case COMBATE_IMEDIATO:
                     break;
@@ -139,9 +117,6 @@ public class Jogador{
                 case DOBRAR_ATAQUE_E_DEFESA_UNIDADE_ALIADA:
                     break;
             }
-
         }
     }
-    */
-    //discutir aplicar efeitos
 }
