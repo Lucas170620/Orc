@@ -1,27 +1,27 @@
 package game;
 
-import game.enums.TodosEfeitos;
+import game.enums.Efeitos;
 
 public class Efeito {
-    private TodosEfeitos efeito;
+    private Efeitos efeito;
     private int n ;
     private int m ;
-    Efeito(TodosEfeitos efeito){
+    Efeito(Efeitos efeito){
         this.efeito = efeito;
     }
 
-    Efeito(TodosEfeitos efeito, int n , int m){
+    Efeito(Efeitos efeito, int n , int m){
         this.efeito = efeito;
         this.n = n ;
         this.m = m ;
     }
 
-    Efeito(TodosEfeitos efeito, int n){
+    Efeito(Efeitos efeito, int n){
         this.efeito = efeito;
         this.n = n ;
     }
 
-    TodosEfeitos resolverEfeito(){
+    Efeitos resolverEfeito(){
         return efeito;
     }
 

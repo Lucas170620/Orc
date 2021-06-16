@@ -1,13 +1,16 @@
 package game;
 
 import game.baralho.Carta;
+import game.baralho.CartaFactory;
 import game.baralho.Deck;
 import game.elementosMesa.CampoDeBatalha;
 import game.elementosMesa.Mao;
 import game.elementosMesa.Nexus;
 import game.elementosMesa.ZonaMonstro;
-import game.enums.TodosEfeitos;
+import game.enums.Efeitos;
 import game.enums.PosicaoDeCombate;
+import game.enums.TipoDeCarta;
+import game.enums.Tracos;
 
 import java.util.List;
 import java.util.Scanner;
@@ -50,6 +53,29 @@ public class Jogador{
     }
 
     public void deckPrincpal(){
+        Carta carta = CartaFactory.criarCarta(TipoDeCarta.CAMPEAO,"Garen",5,5,5);
+        deck.adicionarCarta(carta);
+        carta = CartaFactory.criarCarta(TipoDeCarta.SEGUIDOR,"Tiana",8,7,7);
+        deck.adicionarCarta(carta);
+        carta = CartaFactory.criarCarta(TipoDeCarta.SEGUIDOR,"Vanguarda",4,3,3);
+        deck.adicionarCarta(carta);
+        carta = CartaFactory.criarCarta(TipoDeCarta.SEGUIDOR,"Duelista",3,3,2);
+        deck.adicionarCarta(carta);
+        carta = CartaFactory.criarCarta(TipoDeCarta.SEGUIDOR,"Defensor",2,2,2);
+        deck.adicionarCarta(carta);
+        carta = CartaFactory.criarCarta(TipoDeCarta.SEGUIDOR,"Poro",1,2,1);
+        deck.adicionarCarta(carta);
+        carta = CartaFactory.criarCarta(TipoDeCarta.SEGUIDOR,"Poro Defensor",1,1,2);
+        deck.adicionarCarta(carta);
+        carta = CartaFactory.criarCarta(TipoDeCarta.FEITICO,"Julgamento",8,0,0);
+        deck.adicionarCarta(carta);
+        carta = CartaFactory.criarCarta(TipoDeCarta.FEITICO,"Valor Redobrado",6,0,0);
+        deck.adicionarCarta(carta);
+        carta = CartaFactory.criarCarta(TipoDeCarta.FEITICO,"Golpe Certeiro",1,0,0);
+        deck.adicionarCarta(carta);
+        carta = CartaFactory.criarCarta(TipoDeCarta.FEITICO," Combate um-a-um",2,0,0);
+        deck.adicionarCarta(carta);
+
     }
 
     public void topDeckCarta(){
@@ -61,7 +87,6 @@ public class Jogador{
         int quantidade;
         deck.embaralharDeck();
         mao.maoInicial(deck);
-        mostrarResumoJogador();
         System.out.println("Deseja trocar cartas?\n1-Sim\nQualquer outro botão para não" );
         int verficador = leitor.nextInt();
         if (verficador == 1) {
@@ -71,7 +96,6 @@ public class Jogador{
                 if (quantidade >= 0 && quantidade <= 4) {
                     mao.alterarCartas(deck, quantidade);
                     deck.embaralharDeck();
-                    mostrarResumoJogador();
                 } else{
                     System.out.println("Número inválido");
                     quantidade = leitor.nextInt();
@@ -80,15 +104,10 @@ public class Jogador{
         }
     }
 
-    public void mostrarResumoJogador(){
-        mao.mostrarMao();
-        deck.mostrarDeck();
-    }
-
     private  void aplicarEfeitos(Carta carta){
         List<Efeito> efeitos = carta.realizarEfeito();
         for (Efeito efeito:efeitos){
-            TodosEfeitos resolverEfeito = efeito.resolverEfeito();
+            Efeitos resolverEfeito = efeito.resolverEfeito();
             switch (resolverEfeito){
                 case ZERA_PODER:
                     break;

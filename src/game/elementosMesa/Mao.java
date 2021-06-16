@@ -22,14 +22,6 @@ public class Mao{
         }
     }
 
-    public void mostrarMao(){
-        System.out.println("-----");
-        System.out.println("Cartas na Mão:");
-        for(Carta carta:mao) {
-            System.out.println(carta.getNome());
-        }
-    }
-
     public void topDeck(Deck deck) {
         deck.topDeck(mao);
     }

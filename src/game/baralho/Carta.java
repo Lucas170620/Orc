@@ -14,13 +14,9 @@ public abstract class Carta{
         this.nome = nome;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
     public abstract List<Efeito> realizarEfeito();
 
-    public int mostrarPoder(){
+    public int mostrarPoder() {
         return 0;
     }
 }
