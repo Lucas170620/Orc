@@ -14,8 +14,8 @@ public class Monstro extends Carta {
     private int poder;
     private List<Traco> tracos = new ArrayList();
 
-    public Monstro(String nome,int mana,int poder , int vida) {
-        super(nome);
+    public Monstro(int mana,int poder , int vida) {
+        super();
         this.vida = vida;
         this.poder = poder;
         this.mana = new Mana(mana);
@@ -28,6 +28,9 @@ public class Monstro extends Carta {
 
     public int mostrarPoder(){
         return poder;
+    }
+
+    public void resumoCarta(){
     }
 
     public void adicionarTraco(Tracos traco, int n, int m) {

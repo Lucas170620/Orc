@@ -17,4 +17,10 @@ public class ZonaMonstro{
         }
         else throw new IllegalArgumentException("Está Carta não pode ser invocada");
     }
+
+    public void mostrarCampo(){
+        for (Carta carta:campo){
+            carta.resumoCarta();
+        }
+    }
 }

@@ -10,14 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Carta{
-    private String nome;
+
     private Jogador jogador;
     private List<Efeito> efeitos = new ArrayList();
-
-
-    public Carta(String nome){
-        this.nome = nome;
-    }
 
     public List<Efeito> realizarEfeito(){
         return  efeitos;
@@ -33,4 +28,6 @@ public abstract class Carta{
     public int mostrarPoder(){
         return 0;
     }
+
+    public abstract void resumoCarta();
 }

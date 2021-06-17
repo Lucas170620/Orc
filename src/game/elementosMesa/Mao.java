@@ -25,4 +25,10 @@ public class Mao{
     public void topDeck(Deck deck) {
         deck.topDeck(mao);
     }
+
+    public void mostrarMao(){
+        for (Carta carta:mao){
+            carta.resumoCarta();
+        }
+    }
 }

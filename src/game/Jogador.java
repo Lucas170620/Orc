@@ -3,14 +3,12 @@ package game;
 import game.baralho.Carta;
 import game.baralho.CartaFactory;
 import game.baralho.Deck;
-import game.elementosMesa.CampoDeBatalha;
 import game.elementosMesa.Mao;
 import game.elementosMesa.Nexus;
 import game.elementosMesa.ZonaMonstro;
 import game.enums.Efeitos;
 import game.enums.PosicaoDeCombate;
 import game.enums.TipoDeCarta;
-import game.enums.Tracos;
 
 import java.util.List;
 import java.util.Scanner;
@@ -22,7 +20,6 @@ public class Jogador{
     private Mao mao = new Mao();
     private PosicaoDeCombate posicaoDeCombate;
     private ZonaMonstro zonaMostro = new ZonaMonstro();
-    private CampoDeBatalha campoDeBatalha = new CampoDeBatalha();
     private Jogador adversario;
 
     public Jogador(){
@@ -147,5 +144,12 @@ public class Jogador{
                     break;
             }
         }
+    }
+
+    public void mostrarResumo(){
+        System.out.println("Mão do Jogador: ");
+        mao.mostrarMao();
+        System.out.println("Campo do Jogador: ");
+        zonaMostro.mostrarCampo();
     }
 }
