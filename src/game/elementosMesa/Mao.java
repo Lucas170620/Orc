@@ -1,5 +1,6 @@
 package game.elementosMesa;
 
+import game.Mana;
 import game.baralho.Carta;
 import game.baralho.Deck;
 
@@ -32,4 +33,18 @@ public class Mao{
         }
     }
 
+    public Carta invocarCarta(String nome, Mana mana){
+        for(Carta carta:mao){
+            if(carta.vericarNome(nome)){
+                if(mana.verificarManaDisponivel(carta.mostrarMana())){
+                    mao.remove(carta);
+                    return carta;
+                }
+                else{
+                    throw new IllegalArgumentException("Nao Há mana disponivel");
+                }
+            }
+        }
+        throw new IllegalArgumentException("Carta Não está na sua mao");
+    }
 }

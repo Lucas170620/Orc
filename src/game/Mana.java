@@ -11,12 +11,12 @@ public class Mana{
         quantidadeDeMana = quantidadeDeMana + mana;
     }
 
-    public void removerMana(int mana){
-        quantidadeDeMana = quantidadeDeMana - mana;
+    public void removerMana(Mana mana){
+        quantidadeDeMana = quantidadeDeMana - mana.quantidadeDeMana;
     }
 
-    public boolean verificarManaDisponivel(int mana){
-        if(quantidadeDeMana <= mana) return true;
+    public boolean verificarManaDisponivel(Mana mana){
+        if(quantidadeDeMana <= mana.quantidadeDeMana) return true;
         else return false;
     }
 }

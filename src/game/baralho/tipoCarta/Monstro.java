@@ -9,16 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Monstro extends Carta {
-    private Mana mana ;
     private int vida ;
     private int poder;
     private List<Traco> tracos = new ArrayList();
 
-    public Monstro(int mana,int poder , int vida) {
-        super();
+    public Monstro(String nome ,int mana,int poder , int vida) {
+        super(nome,mana);
         this.vida = vida;
         this.poder = poder;
-        this.mana = new Mana(mana);
     }
 
     @Override
@@ -30,7 +28,8 @@ public class Monstro extends Carta {
         return poder;
     }
 
-    public void resumoCarta(){
+    protected void mostrarTipo(){
+        System.out.println("Unidade");
     }
 
     public void adicionarTraco(Tracos traco, int n, int m) {

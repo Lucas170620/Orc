@@ -160,6 +160,12 @@ public class Jogador{
     }
 
     public void invocarUnidade(){
+        String unidade;
+        Carta carta;
         System.out.println("Deseja invocar qual unidade?");
+        unidade = leitor.next();
+        carta=mao.invocarCarta(unidade,mana);
+        zonaMostro.invocarMontro(carta);
+        mana.removerMana(carta.mostrarMana());
     }
 }

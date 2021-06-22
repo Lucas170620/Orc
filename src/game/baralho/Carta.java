@@ -2,6 +2,7 @@ package game.baralho;
 
 import game.Efeito;
 import game.Jogador;
+import game.Mana;
 import game.Traco;
 import game.enums.Efeitos;
 import game.enums.Tracos;
@@ -12,7 +13,14 @@ import java.util.List;
 public abstract class Carta{
 
     private Jogador jogador;
+    private String nome;
+    private Mana mana;
     private List<Efeito> efeitos = new ArrayList();
+
+    public Carta(String nome , int mana) {
+        this.nome = nome;
+        this.mana = new Mana(mana);
+    }
 
     public List<Efeito> realizarEfeito(){
         return  efeitos;
@@ -29,5 +37,21 @@ public abstract class Carta{
         return 0;
     }
 
-    public abstract void resumoCarta();
+    public void resumoCarta(){
+        System.out.println("O nome da carta:");
+        System.out.println(nome);
+        System.out.println("o tipo da carta é:");
+        mostrarTipo();
+    }
+
+    protected abstract void mostrarTipo();
+
+    public boolean vericarNome(String nome){
+        if(nome.compareTo(this.nome)==0) return true;
+        else return false;
+    }
+
+    public Mana mostrarMana(){
+        return mana;
+    }
 }
