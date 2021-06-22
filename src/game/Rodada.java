@@ -11,10 +11,15 @@ public class Rodada{
     }
 
     public void novaRodada(){
-        jogador1.altararPosicaoDeCombate();
-        jogador2.altararPosicaoDeCombate();
+        jogador1.alterarPosicaoDeCombate();
+        jogador2.alterarPosicaoDeCombate();
         jogador1.topDeckCarta();
         jogador2.topDeckCarta();
+    }
+
+    public void invocarUnidade(){
+        if(jogador1.ehAtacante())jogador1.invocarUnidade();
+        else jogador2.invocarUnidade();
     }
 
     public void mostrarResumo(){

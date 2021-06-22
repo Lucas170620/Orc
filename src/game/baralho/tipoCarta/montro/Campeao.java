@@ -7,7 +7,7 @@ import game.baralho.tipoCarta.Monstro;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Campeao extends Monstro {
+public class Campeao extends Monstro{
     private String nome;
     private int ataques;
     private int danoCausado;

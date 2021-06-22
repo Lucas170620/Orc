@@ -18,6 +18,7 @@ public class Jogador{
     private Scanner leitor = new Scanner(System.in);
     private Deck deck = new Deck();
     private Mao mao = new Mao();
+    private Mana mana = new Mana(0);
     private PosicaoDeCombate posicaoDeCombate;
     private ZonaMonstro zonaMostro = new ZonaMonstro();
     private Jogador adversario;
@@ -34,7 +35,7 @@ public class Jogador{
         nexus.recuperarVida(vidaCurada);
     }
 
-    public void altararPosicaoDeCombate(){
+    public void alterarPosicaoDeCombate(){
         switch (posicaoDeCombate){
             case ATACANTE:
                 posicaoDeCombate = PosicaoDeCombate.DEFENSOR;
@@ -45,7 +46,7 @@ public class Jogador{
         }
     }
 
-    public void altararPosicaoDeCombate(PosicaoDeCombate posicaoDeCombate){
+    public void alterarPosicaoDeCombate(PosicaoDeCombate posicaoDeCombate){
         this.posicaoDeCombate = posicaoDeCombate;
     }
 
@@ -151,5 +152,14 @@ public class Jogador{
         mao.mostrarMao();
         System.out.println("Campo do Jogador: ");
         zonaMostro.mostrarCampo();
+    }
+
+    public boolean ehAtacante() {
+        if(posicaoDeCombate.compareTo(PosicaoDeCombate.ATACANTE)==0) return true;
+        else return false;
+    }
+
+    public void invocarUnidade(){
+        System.out.println("Deseja invocar qual unidade?");
     }
 }

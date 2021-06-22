@@ -31,4 +31,5 @@ public class Mao{
             carta.resumoCarta();
         }
     }
+
 }
