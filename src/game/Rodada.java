@@ -1,5 +1,7 @@
 package game;
 
+import game.jogador.Jogador;
+
 public class Rodada{
     private Integer rodadas;
     private Jogador jogador1 = new Jogador(), jogador2 = new Jogador();

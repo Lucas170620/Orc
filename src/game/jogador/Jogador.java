@@ -1,5 +1,7 @@
-package game;
+package game.jogador;
 
+import game.Efeito;
+import game.Mana;
 import game.baralho.Carta;
 import game.baralho.CartaFactory;
 import game.baralho.Deck;
@@ -17,10 +19,10 @@ public class Jogador{
     private Nexus nexus = new Nexus();
     private Scanner leitor = new Scanner(System.in);
     private Deck deck = new Deck();
-    private Mao mao = new Mao();
-    private Mana mana = new Mana(0);
+    protected Mao mao = new Mao();
+    protected Mana mana = new Mana(0);
     private PosicaoDeCombate posicaoDeCombate;
-    private ZonaMonstro zonaMostro = new ZonaMonstro();
+    protected ZonaMonstro zonaMostro = new ZonaMonstro();
     private Jogador adversario;
 
     public Jogador(){
@@ -165,6 +167,7 @@ public class Jogador{
         System.out.println("Deseja invocar qual unidade?");
         unidade = leitor.next();
         carta=mao.invocarCarta(unidade,mana);
+        mao.removerDaMao(carta);
         zonaMostro.invocarMontro(carta);
         mana.removerMana(carta.mostrarMana());
     }

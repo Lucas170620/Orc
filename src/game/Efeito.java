@@ -14,11 +14,11 @@ public class Efeito {
     }
 
 
-    Efeitos resolverEfeito(){
+    public Efeitos resolverEfeito(){
         return efeito;
     }
 
-    int n(){
+    public int n(){
         return n;
     }
 

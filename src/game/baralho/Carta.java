@@ -1,11 +1,9 @@
 package game.baralho;
 
 import game.Efeito;
-import game.Jogador;
+import game.jogador.Jogador;
 import game.Mana;
-import game.Traco;
 import game.enums.Efeitos;
-import game.enums.Tracos;
 
 import java.util.ArrayList;
 import java.util.List;

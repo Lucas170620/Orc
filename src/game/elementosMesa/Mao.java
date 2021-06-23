@@ -6,6 +6,8 @@ import game.baralho.Deck;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
+import java.util.Random;
 
 public class Mao{
     private List<Carta> mao = new ArrayList();
@@ -46,5 +48,27 @@ public class Mao{
             }
         }
         throw new IllegalArgumentException("Carta Não está na sua mao");
+    }
+
+    public Carta invocarCarta(Mana mana){
+        Carta carta;
+        List<Carta> maoDisponivel = new ArrayList();
+        boolean verificador = true;
+        Random random = new Random();
+        for(Carta cartaDeck: mao){
+            if(mana.verificarManaDisponivel(cartaDeck.mostrarMana())){
+                maoDisponivel.add(cartaDeck);
+            }
+        }
+        if(!maoDisponivel.isEmpty()){
+            carta = mao.get(random.nextInt(mao.size()));
+            return carta;
+        }
+        else throw new IllegalArgumentException("Nao tem carta com mana disponivel");
+
+    }
+
+    public void removerDaMao(Carta carta) {
+        mao.remove(carta);
     }
 }
