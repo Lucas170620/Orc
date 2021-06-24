@@ -61,7 +61,7 @@ public class Mao{
             }
         }
         if(!maoDisponivel.isEmpty()){
-            carta = mao.get(random.nextInt(mao.size()));
+            carta = maoDisponivel.get(random.nextInt(maoDisponivel.size()));
             return carta;
         }
         else throw new IllegalArgumentException("Nao tem carta com mana disponivel");
