@@ -71,4 +71,13 @@ public class Mao{
     public void removerDaMao(Carta carta) {
         mao.remove(carta);
     }
+
+    public boolean verificarCustos(Mana mana){
+        for(Carta carta: mao){
+            if(mana.verificarManaDisponivel(carta.mostrarMana())){
+                return true;
+            }
+        }
+        return  false;
+    }
 }
