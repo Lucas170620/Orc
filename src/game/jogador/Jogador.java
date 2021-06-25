@@ -20,7 +20,7 @@ public class Jogador{
     private Scanner leitor = new Scanner(System.in);
     private Deck deck = new Deck();
     protected Mao mao = new Mao();
-    protected Mana mana = new Mana(0);
+    protected Mana mana = new Mana(4);
     private PosicaoDeCombate posicaoDeCombate;
     protected ZonaMonstro zonaMostro = new ZonaMonstro();
     private Jogador adversario;
@@ -177,6 +177,7 @@ public class Jogador{
                 verificador = false;
             }catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());
+                unidade = leitor.next();
                 verificador =true;
             }
 
