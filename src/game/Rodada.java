@@ -1,10 +1,49 @@
 package game;
 
+import game.jogador.Artificial;
 import game.jogador.Jogador;
+
+import java.util.Scanner;
 
 public class Rodada{
     private Integer rodadas;
-    private Jogador jogador1 = new Jogador(), jogador2 = new Jogador();
+    private Scanner leitor = new Scanner(System.in);
+    private Jogador jogador1 , jogador2;
+
+    public void decidirConfronto(){
+        boolean verificador = true;
+        System.out.println("Escolha um índice: ");
+        System.out.println("1- Jogador vs Jogador");
+        System.out.println("2- Jogador vs Bot ");
+        System.out.println("3- Bot vs Bot");
+        int scan = leitor.nextInt();
+        while (verificador){
+            try{
+                verificador = false;
+                switch (scan){
+                    case 1:
+                        jogador1 = new Jogador();
+                        jogador2 = new Jogador();
+                        break;
+                    case 2:
+                        jogador1 = new Jogador();
+                        jogador2 = new Artificial();
+                        break;
+                    case 3:
+                        jogador1 = new Artificial();
+                        jogador2 = new Artificial();
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Numero Inválido");
+                }
+            }catch (IllegalArgumentException e){
+                System.out.println(e.getMessage());
+                verificador = true;
+                scan = leitor.nextInt();
+
+            }
+        }
+    }
 
     public void inicarJogo(){
         jogador1.comecarJogo(jogador2);

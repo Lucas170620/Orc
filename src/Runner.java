@@ -1,3 +1,4 @@
+import game.Rodada;
 import game.jogador.Jogador;
 
 public class Runner{
