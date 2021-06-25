@@ -163,11 +163,24 @@ public class Jogador{
     }
 
     public void invocarUnidade(){
+        if(!mao.verificarCustos(mana)){
+            throw new IllegalArgumentException("Não há cartas invocaveis"); //tratar exception
+        }
+        boolean verificador = true;
         String unidade;
-        Carta carta;
+        Carta carta = null;
         System.out.println("Deseja invocar qual unidade?");
         unidade = leitor.next();
-        carta=mao.invocarCarta(unidade,mana);
+        while(verificador){
+            try {
+                carta = mao.invocarCarta(unidade, mana);
+                verificador = false;
+            }catch (IllegalArgumentException e){
+                System.out.println(e.getMessage());
+                verificador =true;
+            }
+
+        }
         mao.removerDaMao(carta);
         zonaMostro.invocarMontro(carta);
         mana.removerMana(carta.mostrarMana());
