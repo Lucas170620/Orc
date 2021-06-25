@@ -7,7 +7,7 @@ import game.baralho.tipoCarta.Monstro;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Campeao extends Monstro{
+public class Campeao extends Monstro {
     private int ataques;
     private int danoCausado;
     private int seguidoresMortos;
@@ -16,6 +16,7 @@ public class Campeao extends Monstro{
     public Campeao(String nome,int mana,int poder , int vida) {
         super(nome,mana,poder,vida);
     }
+
     public void mostrarTipo(){
         System.out.println("Campeão");
     }

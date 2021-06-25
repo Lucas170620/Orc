@@ -97,6 +97,7 @@ public class Jogador{
         int quantidade;
         deck.embaralharDeck();
         mao.maoInicial(deck);
+        mao.mostrarMao();
         System.out.println("Deseja trocar cartas?\n1-Sim\nQualquer outro botão para não" );
         int verficador = leitor.nextInt();
         if (verficador == 1) {

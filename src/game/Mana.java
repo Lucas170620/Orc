@@ -16,7 +16,7 @@ public class Mana{
     }
 
     public boolean verificarManaDisponivel(Mana mana){
-        if(quantidadeDeMana <= mana.quantidadeDeMana) return true;
+        if(quantidadeDeMana >= mana.quantidadeDeMana) return true;
         else return false;
     }
 }
