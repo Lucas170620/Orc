@@ -1,5 +1,6 @@
 package game;
 
+import game.enums.PosicaoDeCombate;
 import game.jogador.Bot;
 import game.jogador.Jogador;
 
@@ -47,6 +48,7 @@ public class Rodada{
 
     public void inicarJogo(){
         jogador1.comecarJogo(jogador2);
+        jogador1.alterarPosicaoDeCombate(PosicaoDeCombate.ATACANTE);
         jogador2.comecarJogo(jogador1);
         rodadas = 1;
     }

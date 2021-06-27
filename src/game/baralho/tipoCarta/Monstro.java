@@ -32,6 +32,11 @@ public class Monstro extends Carta {
         System.out.println("Unidade");
     }
 
+    public void reforcarCarta(int n, int m){
+        poder = poder + n;
+        vida = vida + m;
+    }
+
     public void adicionarTraco(Tracos traco, int n, int m) {
         Traco novoTraco = new Traco(traco,n,m);
     }

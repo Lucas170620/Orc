@@ -52,4 +52,8 @@ public abstract class Carta{
     public Mana mostrarMana(){
         return mana;
     }
+
+    public void reforcarCarta(int n, int m){
+
+    }
 }
