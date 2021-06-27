@@ -18,12 +18,12 @@ import java.util.Scanner;
 public class Jogador{
     private Nexus nexus = new Nexus();
     private Scanner leitor = new Scanner(System.in);
-    private Deck deck = new Deck();
+    protected Deck deck = new Deck();
     protected Mao mao = new Mao();
     protected Mana mana = new Mana(4);
     private PosicaoDeCombate posicaoDeCombate;
     protected ZonaMonstro zonaMostro = new ZonaMonstro();
-    private Jogador adversario;
+    protected Jogador adversario;
 
     public Jogador(){
         deckPrincpal();

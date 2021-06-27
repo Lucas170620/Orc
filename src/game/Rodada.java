@@ -1,6 +1,6 @@
 package game;
 
-import game.jogador.Artificial;
+import game.jogador.Bot;
 import game.jogador.Jogador;
 
 import java.util.Scanner;
@@ -27,11 +27,11 @@ public class Rodada{
                         break;
                     case 2:
                         jogador1 = new Jogador();
-                        jogador2 = new Artificial();
+                        jogador2 = new Bot();
                         break;
                     case 3:
-                        jogador1 = new Artificial();
-                        jogador2 = new Artificial();
+                        jogador1 = new Bot();
+                        jogador2 = new Bot();
                         break;
                     default:
                         throw new IllegalArgumentException("Numero Inválido");
