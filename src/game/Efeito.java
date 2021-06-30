@@ -27,7 +27,7 @@ public class Efeito {
         return n;
     }
 
-    int m(){
+    public int m(){
         return m;
     }
 

@@ -18,12 +18,12 @@ import java.util.Scanner;
 public class Jogador{
     private Nexus nexus = new Nexus();
     private Scanner leitor = new Scanner(System.in);
-    private Deck deck = new Deck();
+    protected Deck deck = new Deck();
     protected Mao mao = new Mao();
-    protected Mana mana = new Mana(4);
+    protected Mana mana = new Mana(0);
     private PosicaoDeCombate posicaoDeCombate;
-    protected ZonaMonstro zonaMostro = new ZonaMonstro();
-    private Jogador adversario;
+    protected ZonaMonstro zonaMonstro = new ZonaMonstro();
+    protected Jogador adversario;
 
     public Jogador(){
         deckPrincpal();
@@ -55,6 +55,7 @@ public class Jogador{
     public void deckPrincpal(){
         Carta carta = CartaFactory.criarCarta(TipoDeCarta.CAMPEAO,"Garen",5,5,5);
         carta.adicionarEfeito(Efeitos.CURAR_UNIDADE_ALIADA,0,0);
+        carta.adicionarEfeito(Efeitos.FORTALECER_UMA_UNIDADE,1,1);
         deck.adicionarCarta(carta);
         carta = CartaFactory.criarCarta(TipoDeCarta.SEGUIDOR,"Tiana",8,7,7);
         carta.adicionarEfeito(Efeitos.ATACAR_O_NEXUS,0,0);
@@ -115,7 +116,9 @@ public class Jogador{
         }
     }
 
-    private  void aplicarEfeitos(Carta carta){
+    public void aplicarEfeitos(Carta carta){
+        boolean verificador = true;
+        String nome;
         List<Efeito> efeitos = carta.realizarEfeito();
         for (Efeito efeito:efeitos){
             Efeitos resolverEfeito = efeito.resolverEfeito();
@@ -135,6 +138,21 @@ public class Jogador{
                 case CURAR_UNIDADE_ALIADA:
                     break;
                 case FORTALECER_UMA_UNIDADE:
+                    System.out.println("Qual Unidade você quer fortalecer");
+                    nome = leitor.next();
+                    while (verificador){
+                        try {
+                            verificador =false;
+                            zonaMonstro.fortalecerUnidade(nome,efeito.n(),efeito.m());
+                        }catch (IllegalArgumentException e){
+                            System.out.println(e.getMessage());
+                            nome= leitor.next();
+                            verificador =true;
+                        }
+
+
+                    }
+
                     break;
                 case FORTACELER_UNIDADES_ALIADAS:
                     break;
@@ -146,6 +164,8 @@ public class Jogador{
                     break;
                 case DOBRAR_ATAQUE_E_DEFESA_UNIDADE_ALIADA:
                     break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + resolverEfeito);
             }
         }
     }
@@ -154,7 +174,7 @@ public class Jogador{
         System.out.println("Mão do Jogador: ");
         mao.mostrarMao();
         System.out.println("Campo do Jogador: ");
-        zonaMostro.mostrarCampo();
+        zonaMonstro.mostrarCampo();
     }
 
     public boolean ehAtacante() {
@@ -183,7 +203,8 @@ public class Jogador{
 
         }
         mao.removerDaMao(carta);
-        zonaMostro.invocarMontro(carta);
+        zonaMonstro.invocarMontro(carta);
+        aplicarEfeitos(carta);
         mana.removerMana(carta.mostrarMana());
     }
 }

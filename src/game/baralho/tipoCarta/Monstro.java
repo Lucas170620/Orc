@@ -32,6 +32,7 @@ public class Monstro extends Carta {
         System.out.println("Unidade");
     }
 
+
     public boolean possuiElusivo() {
         for (int i = 0; i < this.tracos.size(); ++i) {
             if (this.tracos.get(i).verificaElusividade()) {
@@ -56,17 +57,21 @@ public class Monstro extends Carta {
                 this.vida=this.vida+n;
                 this.poder=this.vida+m;
             }
-        }
-
-    }
-
-    public void adicionarTraco(Tracos traco, int n, int m) {
-        Traco novoTraco = new Traco(traco,n,m);
-    }
-    public void adicionarTraco(Tracos traco) {
-        Traco novoTraco = new Traco(traco);
-        tracos.add(novoTraco);
-    }
-
-}
-
+        }}}
+//
+//    public void reforcarCarta(int n, int m){
+//        poder = poder + n;
+//        vida = vida + m;
+//
+//    }
+//
+////    public void adicionarTraco(Tracos traco, int n, int m) {
+////        Traco novoTraco = new Traco(traco,n,m);
+////    }
+////    public void adicionarTraco(Tracos traco) {
+////        Traco novoTraco = new Traco(traco);
+////        tracos.add(novoTraco);
+////    }
+////
+////}
+////

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Feitico extends Carta{
-    private List<Efeito> efeitos = new ArrayList();
 
     public Feitico(String nome,int mana) {
         super(nome,mana);

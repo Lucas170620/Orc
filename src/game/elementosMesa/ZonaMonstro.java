@@ -23,4 +23,14 @@ public class ZonaMonstro{
             carta.resumoCarta();
         }
     }
+
+    public void fortalecerUnidade(String nome, int n, int m){
+        boolean verificador = true;
+        for (Carta carta:campo){
+            if(carta.vericarNome(nome)){
+                verificador = false;
+                carta.reforcarCarta(n,m);
+            }
+        }
+    }
 }
