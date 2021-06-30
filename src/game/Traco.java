@@ -1,5 +1,5 @@
 package game;
-
+import game.baralho.Carta;
 import game.enums.Efeitos;
 import game.enums.Tracos;
 
@@ -7,30 +7,45 @@ public class Traco {
     private Tracos traco;
     private int n ;
     private int m ;
-    Traco(Tracos traco){
-        this.traco = traco;
-    }
 
-    public Traco(Tracos traco, int n, int m){
+
+    public Traco(Tracos traco, int n, int m){ //Fúria expecificamente
         this.traco = traco;
         this.n = n ;
         this.m = m ;
     }
 
-    Traco(Tracos traco, int n){
+
+    public  Traco(Tracos traco){ //elusivo ou Ataque duplo
         this.traco = traco;
-        this.n = n ;
     }
 
-    Tracos resolverTraco(){
-        return traco;
+    public  boolean verificaElusividade(){ //elusivo
+        if(this.traco.equals(Tracos.ELUSIVO))
+            return true;
+        else return false;
+    }
+    public  boolean verificaAtaquesDuplos(){ //elusivo
+        if(this.traco.equals(Tracos.ATAQUE_DUPLO))
+            return true;
+        else return false;
+    }
+    public  boolean verificaFuria(){ //elusivo
+        if(this.traco.equals(Tracos.FURIA))
+            return true;
+        else return false;
     }
 
-    int n(){
-        return n;
-    }
 
-    int m(){
-        return m;
-    }
+//    Tracos resolverTraco(){
+//        return traco;
+//    }
+//
+//    int n(){
+//        return n;
+//    }
+//
+//    int m(){
+//        return m;
+//    }
 }

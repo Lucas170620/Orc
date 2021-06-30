@@ -15,9 +15,9 @@ public class Feitico extends Carta{
         super(nome,mana);
     }
 
-    public List<Efeito> realizarEfeito(){
-        return efeitos;
-    }
+//    public List<Efeito> realizarEfeito(){
+//        return efeitos;
+//    }
 
     @Override
     public boolean ehMonstro() {

@@ -30,6 +30,10 @@ public abstract class Carta{
         Efeito novoEfeito = new Efeito(efeito,n,m);
         efeitos.add(novoEfeito);
     }
+    public void adicionarEfeito(Efeitos efeito) {
+        Efeito novoEfeito = new Efeito(efeito);
+        efeitos.add(novoEfeito);
+    }
 
     public int mostrarPoder(){
         return 0;
@@ -44,10 +48,19 @@ public abstract class Carta{
 
     protected abstract void mostrarTipo();
 
+    public void aplicaEfeitos(){
+        for (int i = 0; i < this.efeitos.size(); ++i) {
+//            this.efeitos.get(i).verificaFuria();
+        }
+    }
+
+
     public boolean vericarNome(String nome){
         if(nome.compareTo(this.nome)==0) return true;
         else return false;
     }
+
+
 
     public Mana mostrarMana(){
         return mana;
