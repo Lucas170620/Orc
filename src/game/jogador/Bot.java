@@ -9,16 +9,18 @@ import java.util.List;
 public class Bot extends Jogador{
     public void invocarUnidade(){
         Carta carta = mao.invocarCarta(mana);
-        zonaMonstro.invocarMontro(carta);
+        zonaMonstro.invocarMonstro(carta);
         mao.removerDaMao(carta);
         mana.removerMana(carta.mostrarMana());
     }
+
     public void comecarJogo(Jogador adversario){
         this.adversario = adversario;
         deck.embaralharDeck();
         mao.maoInicial(deck);
         mao.mostrarMao();
     }
+
     public void aplicarEfeitos(Carta carta){
         List<Efeito> efeitos = carta.realizarEfeito();
         for (Efeito efeito:efeitos){

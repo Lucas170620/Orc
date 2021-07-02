@@ -203,7 +203,7 @@ public class Jogador{
 
         }
         mao.removerDaMao(carta);
-        zonaMonstro.invocarMontro(carta);
+        zonaMonstro.invocarMonstro(carta);
         aplicarEfeitos(carta);
         mana.removerMana(carta.mostrarMana());
     }

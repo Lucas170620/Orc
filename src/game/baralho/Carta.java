@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Carta{
-
-    private Jogador jogador;
     private String nome;
     private Mana mana;
     private List<Efeito> efeitos = new ArrayList();
@@ -30,6 +28,7 @@ public abstract class Carta{
         Efeito novoEfeito = new Efeito(efeito,n,m);
         efeitos.add(novoEfeito);
     }
+
     public void adicionarEfeito(Efeitos efeito) {
         Efeito novoEfeito = new Efeito(efeito);
         efeitos.add(novoEfeito);
@@ -59,8 +58,6 @@ public abstract class Carta{
         if(nome.compareTo(this.nome)==0) return true;
         else return false;
     }
-
-
 
     public Mana mostrarMana(){
         return mana;

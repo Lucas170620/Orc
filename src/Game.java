@@ -1,9 +1,9 @@
 public class Game {
-    private boolean exitSelected;
+    private boolean escolherSair;
     public void start() {
-        exitSelected = false;
+        escolherSair = false;
         System.out.println("Game started!");
-        while(!exitSelected) {
+        while(!escolherSair) {
             drawBoard();
             readInput();
             updateBoard();

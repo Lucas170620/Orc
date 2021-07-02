@@ -12,6 +12,7 @@ public class Efeito {
         this.n = n ;
         this.m = m ;
     }
+
     public Efeito(Efeitos efeito){
         this.efeito = efeito;
         this.n = n ;

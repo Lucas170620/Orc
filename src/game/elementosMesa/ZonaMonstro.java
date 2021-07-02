@@ -8,7 +8,7 @@ import java.util.List;
 public class ZonaMonstro{
     private List<Carta> campo = new ArrayList();
 
-    public void invocarMontro(Carta carta){
+    public void invocarMonstro(Carta carta){
         if(carta.ehMonstro()){
             if(campo.size()<=6){
                 campo.add(carta);
