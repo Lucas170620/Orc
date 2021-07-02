@@ -2,21 +2,21 @@ public class Game {
     private boolean escolherSair;
     public void start() {
         escolherSair = false;
-        System.out.println("Game started!");
+        System.out.println("Jogo Começou!");
         while(!escolherSair) {
             drawBoard();
-            readInput();
-            updateBoard();
+            lerEntrada();
+            atualizarMesa();
         }
-        System.out.println("Game terminated. Bye!");
+        System.out.println("Jogo Acabou!");
     }
 
     private void drawBoard(){
     }
 
-    private void readInput(){
+    private void lerEntrada(){
     }
 
-    private void updateBoard(){
+    private void atualizarMesa(){
     }
 }
