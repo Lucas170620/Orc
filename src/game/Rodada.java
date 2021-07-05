@@ -50,14 +50,16 @@ public class Rodada{
         jogador1.comecarJogo(jogador2);
         jogador1.alterarPosicaoDeCombate(PosicaoDeCombate.ATACANTE);
         jogador2.comecarJogo(jogador1);
+        jogador2.alterarPosicaoDeCombate(PosicaoDeCombate.DEFENSOR);
         rodadas = 1;
     }
 
     public void novaRodada(){
-        jogador1.alterarPosicaoDeCombate();
-        jogador2.alterarPosicaoDeCombate();
+        jogador1.alterarPosicaoDeCombate(rodadas);
+        jogador2.alterarPosicaoDeCombate(rodadas);
         jogador1.topDeckCarta();
         jogador2.topDeckCarta();
+        rodadas++;
     }
 
     public void invocarUnidade(){

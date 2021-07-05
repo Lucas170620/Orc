@@ -1,7 +1,8 @@
 package game.jogador;
 
 import game.Efeito;
-import game.Mana;
+import game.mana.Mana;
+import game.mana.ManaCristalizada;
 import game.baralho.Carta;
 import game.baralho.CartaFactory;
 import game.baralho.Deck;
@@ -21,6 +22,7 @@ public class Jogador{
     protected Deck deck = new Deck();
     protected Mao mao = new Mao();
     protected Mana mana = new Mana(0);
+    protected Mana manaCristalizada = new ManaCristalizada(0);
     private PosicaoDeCombate posicaoDeCombate;
     protected ZonaMonstro zonaMonstro = new ZonaMonstro();
     protected Jogador adversario;
@@ -37,9 +39,14 @@ public class Jogador{
         nexus.recuperarVida(vidaCurada);
     }
 
-    public void alterarPosicaoDeCombate(){
+    public void alterarPosicaoDeCombate(Integer rodada){
         switch (posicaoDeCombate){
             case ATACANTE:
+                if(mana.verificarManaDisponivel(new Mana(1))){
+                    manaCristalizada.adicionarMana(mana);
+                }
+                mana.zerarMana();
+                mana.adicionarMana(new Mana(rodada));
                 posicaoDeCombate = PosicaoDeCombate.DEFENSOR;
                 break;
             case DEFENSOR:
@@ -205,6 +212,6 @@ public class Jogador{
         mao.removerDaMao(carta);
         zonaMonstro.invocarMonstro(carta);
         aplicarEfeitos(carta);
-        mana.removerMana(carta.mostrarMana());
+        mana.removerMana(carta.mostrarMana(),carta.tipo());
     }
 }

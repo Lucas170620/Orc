@@ -1,12 +1,7 @@
 package game.baralho.tipoCarta;
 
-import game.Efeito;
 import game.baralho.Carta;
-import game.Mana;
-import game.enums.Efeitos;
-
-import java.util.ArrayList;
-import java.util.List;
+import game.enums.TipoDeCarta;
 
 public class Feitico extends Carta{
 
@@ -26,5 +21,10 @@ public class Feitico extends Carta{
 
     public void mostrarTipo(){
         System.out.println("Feitico");
+    }
+
+    @Override
+    public TipoDeCarta tipo() {
+        return TipoDeCarta.FEITICO;
     }
 }

@@ -1,8 +1,8 @@
 package game.baralho;
 
 import game.Efeito;
-import game.jogador.Jogador;
-import game.Mana;
+import game.enums.TipoDeCarta;
+import game.mana.Mana;
 import game.enums.Efeitos;
 
 import java.util.ArrayList;
@@ -66,4 +66,6 @@ public abstract class Carta{
     public void reforcarCarta(int n, int m){
 
     }
+
+    public abstract TipoDeCarta tipo();
 }

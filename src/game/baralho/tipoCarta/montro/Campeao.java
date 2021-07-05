@@ -1,11 +1,7 @@
 package game.baralho.tipoCarta.montro;
 
-import game.Traco;
-import game.Mana;
 import game.baralho.tipoCarta.Monstro;
-
-import java.util.ArrayList;
-import java.util.List;
+import game.enums.TipoDeCarta;
 
 public class Campeao extends Monstro {
     private int ataques;
@@ -19,5 +15,9 @@ public class Campeao extends Monstro {
 
     public void mostrarTipo(){
         System.out.println("Campeão");
+    }
+
+    public TipoDeCarta tipo() {
+        return TipoDeCarta.CAMPEAO;
     }
 }

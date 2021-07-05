@@ -11,7 +11,7 @@ public class Bot extends Jogador{
         Carta carta = mao.invocarCarta(mana);
         zonaMonstro.invocarMonstro(carta);
         mao.removerDaMao(carta);
-        mana.removerMana(carta.mostrarMana());
+        mana.removerMana(carta.mostrarMana(),carta.tipo());
     }
 
     public void comecarJogo(Jogador adversario){

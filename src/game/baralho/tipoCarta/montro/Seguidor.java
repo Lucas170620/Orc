@@ -1,12 +1,7 @@
 package game.baralho.tipoCarta.montro;
 
-import game.Traco;
-import game.Mana;
 import game.baralho.tipoCarta.Monstro;
-import game.enums.Tracos;
-
-import java.util.ArrayList;
-import java.util.List;
+import game.enums.TipoDeCarta;
 
 public class Seguidor extends Monstro {
 
@@ -16,5 +11,9 @@ public class Seguidor extends Monstro {
 
     public void mostrarTipo(){
         System.out.println("Seguidor");
+    }
+
+    public TipoDeCarta tipo() {
+        return TipoDeCarta.SEGUIDOR;
     }
 }

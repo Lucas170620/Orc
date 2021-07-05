@@ -1,9 +1,8 @@
 package game.baralho.tipoCarta;
 
-import game.Mana;
 import game.Traco;
 import game.baralho.Carta;
-import game.enums.Tracos;
+import game.enums.TipoDeCarta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +29,11 @@ public class Monstro extends Carta {
 
     protected void mostrarTipo() {
         System.out.println("Unidade");
+    }
+
+    @Override
+    public TipoDeCarta tipo() {
+        return null;
     }
 
 

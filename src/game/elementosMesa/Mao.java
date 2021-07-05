@@ -1,12 +1,11 @@
 package game.elementosMesa;
 
-import game.Mana;
+import game.mana.Mana;
 import game.baralho.Carta;
 import game.baralho.Deck;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 import java.util.Random;
 
 public class Mao{
