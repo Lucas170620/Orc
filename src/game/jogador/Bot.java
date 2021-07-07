@@ -3,10 +3,15 @@ package game.jogador;
 import game.Efeito;
 import game.baralho.Carta;
 import game.enums.Efeitos;
+import game.enums.TipoDeCarta;
+import game.mana.Mana;
 
 import java.util.List;
 
 public class Bot extends Jogador{
+    public Bot(Integer jogador){
+        super(jogador);
+    }
     public void invocarUnidade(){
         Carta carta = mao.invocarCarta(mana);
         zonaMonstro.invocarMonstro(carta);
@@ -53,6 +58,34 @@ public class Bot extends Jogador{
                 case DOBRAR_ATAQUE_E_DEFESA_UNIDADE_ALIADA:
                     break;
             }
+        }
+    }
+
+    public boolean realizarAcao(){
+        Integer ler;
+        System.out.println("Jogador: "+jogador);
+        if(mao.verificarCustosMonstro(mana)){
+            invocarUnidade();
+        }
+        else if (mao.verificarCustosFeitico(mana,manaCristalizada)){
+            ativarFeitico();
+        }
+
+        return false;
+    }
+
+    protected void ativarFeitico(){
+        Carta carta = mao.ativarFeitico(mana,manaCristalizada);
+        mao.removerDaMao(carta);
+        if(mana.verificarManaDisponivel(carta.mostrarMana())) {
+            mana.removerMana(carta.mostrarMana(), carta.tipo());
+        }
+        else {
+            Mana manaTotal = new Mana(0);
+            manaTotal.adicionarMana(carta.mostrarMana());
+            manaTotal.removerMana(mana, TipoDeCarta.FEITICO);
+            mana.zerarMana();
+            manaCristalizada.removerMana(manaTotal,TipoDeCarta.FEITICO);
         }
     }
 }

@@ -20,7 +20,7 @@ public class Feitico extends Carta{
 
 
     public void mostrarTipo(){
-        System.out.println("Feitico");
+        System.out.println("\t\tFeitico");
     }
 
     @Override

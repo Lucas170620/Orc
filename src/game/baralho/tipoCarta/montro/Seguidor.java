@@ -10,7 +10,7 @@ public class Seguidor extends Monstro {
     }
 
     public void mostrarTipo(){
-        System.out.println("Seguidor");
+        System.out.println("\t\tSeguidor");
     }
 
     public TipoDeCarta tipo() {

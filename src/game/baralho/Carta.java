@@ -40,8 +40,10 @@ public abstract class Carta{
 
     public void resumoCarta(){
         System.out.println("O nome da carta:");
-        System.out.println(nome);
-        System.out.println("o tipo da carta é:");
+        System.out.println("\t"+nome);
+        System.out.println("\tCusto de mana:");
+        System.out.println("\t\t"+mana.toString());
+        System.out.println("\tO tipo da carta é:");
         mostrarTipo();
     }
 

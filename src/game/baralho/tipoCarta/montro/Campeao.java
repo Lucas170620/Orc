@@ -14,7 +14,7 @@ public class Campeao extends Monstro {
     }
 
     public void mostrarTipo(){
-        System.out.println("Campeão");
+        System.out.println("\t\tCampeão");
     }
 
     public TipoDeCarta tipo() {

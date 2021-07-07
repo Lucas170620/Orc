@@ -21,13 +21,15 @@ public class Jogador{
     private Scanner leitor = new Scanner(System.in);
     protected Deck deck = new Deck();
     protected Mao mao = new Mao();
-    protected Mana mana = new Mana(0);
-    protected Mana manaCristalizada = new ManaCristalizada(0);
+    protected Mana mana = new Mana(1);
+    protected ManaCristalizada manaCristalizada = new ManaCristalizada(0);
     private PosicaoDeCombate posicaoDeCombate;
     protected ZonaMonstro zonaMonstro = new ZonaMonstro();
     protected Jogador adversario;
+    protected Integer jogador ;
 
-    public Jogador(){
+    public Jogador(Integer jogador){
+        this.jogador = jogador;
         deckPrincpal();
     }
 
@@ -50,6 +52,8 @@ public class Jogador{
                 posicaoDeCombate = PosicaoDeCombate.DEFENSOR;
                 break;
             case DEFENSOR:
+                mana.zerarMana();
+                mana.adicionarMana(new Mana(rodada));
                 posicaoDeCombate = PosicaoDeCombate.ATACANTE;
                 break;
         }
@@ -190,22 +194,31 @@ public class Jogador{
     }
 
     public void invocarUnidade(){
-        if(!mao.verificarCustos(mana)){
+        Integer contador = 0;
+        if(!mao.verificarCustosMonstro(mana)){
             throw new IllegalArgumentException("Não há cartas invocaveis"); //tratar exception
         }
         boolean verificador = true;
         String unidade;
         Carta carta = null;
         System.out.println("Deseja invocar qual unidade?");
-        unidade = leitor.next();
+        unidade = leitor.nextLine();
         while(verificador){
             try {
                 carta = mao.invocarCarta(unidade, mana);
                 verificador = false;
             }catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());
-                unidade = leitor.next();
-                verificador =true;
+                if(contador>=3){
+                    throw new IllegalArgumentException("Muitas Tentativas erradas");
+                }
+                else {
+                    System.out.println("Erro: "+e.getMessage());
+                    System.out.println("Digite Novamente");
+                    contador++;
+                    unidade = leitor.nextLine();
+                    verificador = true;
+                }
             }
 
         }
@@ -213,5 +226,80 @@ public class Jogador{
         zonaMonstro.invocarMonstro(carta);
         aplicarEfeitos(carta);
         mana.removerMana(carta.mostrarMana(),carta.tipo());
+    }
+
+    public boolean realizarAcao(){
+        Integer ler;
+        System.out.println("Jogador: "+jogador);
+        System.out.println("0-Deseja Sair");
+        System.out.println("1-Deseja Invocar Carta");
+        System.out.println("2-Deseja ativar feitiço");
+        System.out.println("Digite qualquer outro botão para não fazer nada");
+        ler = leitor.nextInt();
+        leitor.nextLine();
+        switch (ler){
+            case 0:
+                return true;
+            case 1:
+                try {
+                    invocarUnidade();
+                }catch (IllegalArgumentException e){
+                    System.out.println(e.getMessage());
+                }
+                break;
+            case 2:
+                try {
+                    ativarFeitico();
+
+                }catch (IllegalArgumentException e){
+                    System.out.println(e.getMessage());
+                }
+                break;
+        }
+        if(jogador == 1) jogador = 2;
+        else jogador = 1;
+        return false;
+    }
+
+    protected void ativarFeitico() {
+        Integer contador = 0;
+        if(!mao.verificarCustosFeitico(mana,manaCristalizada)){
+            throw new IllegalArgumentException("Não há Feitiços disponiveis"); //tratar exception
+        }
+        boolean verificador = true;
+        String unidade;
+        Carta carta = null;
+        System.out.println("Deseja ativar qual feitiço?");
+        unidade = leitor.nextLine();
+        while(verificador){
+            try {
+                verificador = false;
+                carta = mao.ativarFeitico(unidade, mana,manaCristalizada);
+
+            }catch (IllegalArgumentException e){
+                if(contador>=3){
+                    throw new IllegalArgumentException("Muitas Tentativas erradas");
+                }
+                else {
+                    System.out.println("Erro: "+e.getMessage());
+                    System.out.println("Digite Novamente");
+                    contador++;
+                    unidade = leitor.nextLine();
+                    verificador = true;
+                }
+            }
+
+        }
+        mao.removerDaMao(carta);
+        if(mana.verificarManaDisponivel(carta.mostrarMana())) {
+            mana.removerMana(carta.mostrarMana(), carta.tipo());
+        }
+        else {
+            Mana manaTotal = new Mana(0);
+            manaTotal.adicionarMana(carta.mostrarMana());
+            manaTotal.removerMana(mana, TipoDeCarta.FEITICO);
+            mana.zerarMana();
+            manaCristalizada.removerMana(manaTotal,TipoDeCarta.FEITICO);
+        }
     }
 }

@@ -32,4 +32,10 @@ public class Mana{
     public void zerarMana() {
         quantidadeDeMana = 0;
     }
+
+    @Override
+    public String toString() {
+        return "Mana{" +quantidadeDeMana +
+                '}';
+    }
 }

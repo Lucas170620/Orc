@@ -18,6 +18,11 @@ public class ManaCristalizada extends Mana {
         }
 
     }
+    public boolean verificarManaDisponivel(Mana manaCarta,Mana manaJogador){
+        Integer quantidadeFinal = quantidadeDeMana + manaJogador.quantidadeDeMana;
+        if(quantidadeFinal >= manaCarta.quantidadeDeMana) return true;
+        else return false;
+    }
 
     public void removerMana(Mana mana, TipoDeCarta tipoDeCarta){
         if(tipoDeCarta.compareTo(TipoDeCarta.FEITICO)==0) {

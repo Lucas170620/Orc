@@ -23,16 +23,16 @@ public class Rodada{
                 verificador = false;
                 switch (scan){
                     case 1:
-                        jogador1 = new Jogador();
-                        jogador2 = new Jogador();
+                        jogador1 = new Jogador(1);
+                        jogador2 = new Jogador(2);
                         break;
                     case 2:
-                        jogador1 = new Jogador();
-                        jogador2 = new Bot();
+                        jogador1 = new Jogador(1);
+                        jogador2 = new Bot(2);
                         break;
                     case 3:
-                        jogador1 = new Bot();
-                        jogador2 = new Bot();
+                        jogador1 = new Bot(1);
+                        jogador2 = new Bot(2);
                         break;
                     default:
                         throw new IllegalArgumentException("Numero Inválido");
@@ -55,16 +55,17 @@ public class Rodada{
     }
 
     public void novaRodada(){
+        rodadas++;
         jogador1.alterarPosicaoDeCombate(rodadas);
         jogador2.alterarPosicaoDeCombate(rodadas);
         jogador1.topDeckCarta();
         jogador2.topDeckCarta();
-        rodadas++;
+
     }
 
-    public void invocarUnidade(){
-        if(jogador1.ehAtacante())jogador1.invocarUnidade();
-        else jogador2.invocarUnidade();
+    public boolean realizarAcao(){
+        if(jogador1.ehAtacante()) return jogador1.realizarAcao();
+        else return jogador2.realizarAcao();
     }
 
     public void mostrarResumo(){
