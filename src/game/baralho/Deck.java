@@ -1,7 +1,8 @@
 package game.baralho;
 
+import error.EndGameException;
+
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -16,13 +17,13 @@ public class Deck{
         Collections.shuffle(cartas);
     }
 
-    public void topDeck(List<Carta> mao) {
+    public void topDeck(List<Carta> mao){
         if(!cartas.isEmpty()){
             mao.add(cartas.get(0));
             cartas.remove(0);
         }
         else{
-            System.out.println("Deck-out");
+            throw new EndGameException("Deck-out");
         }
     }
 }

@@ -63,9 +63,9 @@ public class Rodada{
 
     }
 
-    public boolean realizarAcao(){
-        if(jogador1.ehAtacante()) return jogador1.realizarAcao();
-        else return jogador2.realizarAcao();
+    public void realizarAcao(){
+        if(jogador1.ehAtacante()) jogador1.realizarAcao();
+        else jogador2.realizarAcao();
     }
 
     public void mostrarResumo(){

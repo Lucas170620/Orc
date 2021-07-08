@@ -13,7 +13,7 @@ public class Mao{
     private List<Carta> mao = new ArrayList();
 
 
-    public void maoInicial(Deck deck){
+    public void maoInicial(Deck deck) {
         for (int i = 0 ; i < 4; i++) deck.topDeck(mao);
     }
 
@@ -106,6 +106,7 @@ public class Mao{
         else throw new IllegalArgumentException("Nao tem carta com mana disponivel");
 
     }
+
     public Carta ativarFeitico(String nome, Mana mana,ManaCristalizada manaCristalizada){
         for(Carta carta:mao){
             if(carta.vericarNome(nome)){

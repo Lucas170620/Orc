@@ -1,3 +1,4 @@
+import error.EndGameException;
 import game.Rodada;
 
 import java.util.Scanner;
@@ -12,11 +13,19 @@ public class Game {
         System.out.println("Jogo Começou!");
         rodada.decidirConfronto();
         rodada.inicarJogo();
+
+
         jogador = 1 ;
         while(!escolherSair) {
-            drawBoard();
-            lerEntrada();
-            atualizarMesa();
+            try {
+                drawBoard();
+                lerEntrada();
+                atualizarMesa();
+            }catch (EndGameException e){
+                System.out.println(e.getMessage());
+                escolherSair = true;
+            }
+
         }
         System.out.println("Jogo Acabou!");
     }
@@ -26,10 +35,11 @@ public class Game {
     }
 
     private void lerEntrada(){
-        escolherSair = rodada.realizarAcao();
+        rodada.realizarAcao();
+
     }
 
     private void atualizarMesa(){
-        rodada.novaRodada();
+            rodada.novaRodada();
     }
 }

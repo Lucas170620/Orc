@@ -1,5 +1,6 @@
 package game.jogador;
 
+import error.EndGameException;
 import game.Efeito;
 import game.mana.Mana;
 import game.mana.ManaCristalizada;
@@ -104,7 +105,7 @@ public class Jogador{
         mao.topDeck(deck);
     }
 
-    public void comecarJogo(Jogador adversario){
+    public void comecarJogo(Jogador adversario) {
         this.adversario = adversario;
         int quantidade;
         deck.embaralharDeck();
@@ -228,7 +229,7 @@ public class Jogador{
         mana.removerMana(carta.mostrarMana(),carta.tipo());
     }
 
-    public boolean realizarAcao(){
+    public void realizarAcao(){
         Integer ler;
         System.out.println("Jogador: "+jogador);
         System.out.println("0-Deseja Sair");
@@ -239,7 +240,7 @@ public class Jogador{
         leitor.nextLine();
         switch (ler){
             case 0:
-                return true;
+                throw new EndGameException("Você Digitou para sair");
             case 1:
                 try {
                     invocarUnidade();
@@ -258,7 +259,6 @@ public class Jogador{
         }
         if(jogador == 1) jogador = 2;
         else jogador = 1;
-        return false;
     }
 
     protected void ativarFeitico() {

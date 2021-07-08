@@ -9,9 +9,11 @@ import game.mana.Mana;
 import java.util.List;
 
 public class Bot extends Jogador{
+
     public Bot(Integer jogador){
         super(jogador);
     }
+
     public void invocarUnidade(){
         Carta carta = mao.invocarCarta(mana);
         zonaMonstro.invocarMonstro(carta);
@@ -61,7 +63,7 @@ public class Bot extends Jogador{
         }
     }
 
-    public boolean realizarAcao(){
+    public void realizarAcao(){
         Integer ler;
         System.out.println("Jogador: "+jogador);
         if(mao.verificarCustosMonstro(mana)){
@@ -70,8 +72,6 @@ public class Bot extends Jogador{
         else if (mao.verificarCustosFeitico(mana,manaCristalizada)){
             ativarFeitico();
         }
-
-        return false;
     }
 
     protected void ativarFeitico(){
