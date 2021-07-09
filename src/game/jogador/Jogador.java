@@ -95,7 +95,7 @@ public class Jogador{
         carta = CartaFactory.criarCarta(TipoDeCarta.FEITICO,"Golpe Certeiro",1,0,0);
         carta.adicionarEfeito(Efeitos.FORTALECER_UMA_UNIDADE,1,1);
         deck.adicionarCarta(carta);
-        carta = CartaFactory.criarCarta(TipoDeCarta.FEITICO," Combate um-a-um",2,0,0);
+        carta = CartaFactory.criarCarta(TipoDeCarta.FEITICO,"Combate Um-a-Um",2,0,0);
         carta.adicionarEfeito(Efeitos.COMBATE_IMEDIATO,0,0);
         deck.adicionarCarta(carta);
 
@@ -111,7 +111,7 @@ public class Jogador{
         deck.embaralharDeck();
         mao.maoInicial(deck);
         mao.mostrarMao();
-        System.out.println("Deseja trocar cartas?\n1-Sim\nQualquer outro botão para não" );
+        System.out.println("Deseja trocar cartas?\n1-Sim\nOutro botão-Não" );
         int verficador = leitor.nextInt();
         if (verficador == 1) {
             System.out.println("Quantas Cartas?");
@@ -182,12 +182,23 @@ public class Jogador{
         }
     }
 
+
     public void mostrarResumo(){
-        System.out.println("Mão do Jogador: ");
-        mao.mostrarMao();
         System.out.println("Campo do Jogador: ");
         zonaMonstro.mostrarCampo();
     }
+
+    public void mostrarMaoatual(){
+        System.out.println("Mão do Jogador " + jogador+":");
+        mao.mostrarMaoCompleta();
+    }
+
+    public void mostrarManaJogador(){
+        System.out.println("Mana Atual:" + this.mana);
+        mao.mostrarMaoCompleta();
+    }
+
+
 
     public boolean ehAtacante() {
         if(posicaoDeCombate.compareTo(PosicaoDeCombate.ATACANTE)==0) return true;
@@ -203,11 +214,15 @@ public class Jogador{
         String unidade;
         Carta carta = null;
         System.out.println("Deseja invocar qual unidade?");
+        System.out.println("Escreva o Nome!");
+
+        this.mao.mostraNomesMao();
         unidade = leitor.nextLine();
         while(verificador){
             try {
                 carta = mao.invocarCarta(unidade, mana);
                 verificador = false;
+                System.out.println("Carta Invocada Com Sucesso");
             }catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());
                 if(contador>=3){
@@ -231,11 +246,29 @@ public class Jogador{
 
     public void realizarAcao(){
         Integer ler;
+        System.out.println("JOGADA DE JOGADOR: "+jogador);
+
+        System.out.println("1-Deseja Ver sua Mão?");
+        System.out.println("1-Sim");
+        System.out.println("2-Não");
+        ler = leitor.nextInt();
+        leitor.nextLine();
+        if(ler==1){
+            mostrarMaoatual();
+        }else{
+            System.out.println(" ");
+
+        }
         System.out.println("Jogador: "+jogador);
+        System.out.println("***************************************");
         System.out.println("0-Deseja Sair");
-        System.out.println("1-Deseja Invocar Carta");
-        System.out.println("2-Deseja ativar feitiço");
-        System.out.println("Digite qualquer outro botão para não fazer nada");
+        System.out.println("1-Deseja Invocar Monstro");
+        System.out.println("2-Deseja Invocar Feitiço");
+        System.out.println("3-Entrar Em Combate:");
+
+        System.out.println("Digite qualquer outro botão para não fazer nada!");
+        System.out.println("***************************************");
+
         ler = leitor.nextInt();
         leitor.nextLine();
         switch (ler){
@@ -256,6 +289,13 @@ public class Jogador{
                     System.out.println(e.getMessage());
                 }
                 break;
+            case 3:
+                if(this.zonaMonstro.verificaTamanho()){
+                    System.out.println("Por favor tente novamente");
+                    this.realizarAcao();
+                }
+                break;
+
         }
         if(jogador == 1) jogador = 2;
         else jogador = 1;

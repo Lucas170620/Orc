@@ -31,7 +31,18 @@ public class Mao{
 
     public void mostrarMao(){
         for (Carta carta:mao){
+            carta.resumoCurtoCarta();
+        }
+    }
+    public void mostrarMaoCompleta(){
+        for (Carta carta:mao){
             carta.resumoCarta();
+        }
+    }
+
+    public void mostraNomesMao(){
+        for (Carta carta:mao){
+            carta.resumoCurtoCarta();
         }
     }
 

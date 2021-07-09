@@ -19,9 +19,20 @@ public class ZonaMonstro{
     }
 
     public void mostrarCampo(){
-        for (Carta carta:campo){
-            carta.resumoCarta();
+        if(this.campo.size()==0){
+            System.out.println("<<<Campo vazio!>>>");
         }
+        for (Carta carta:campo){
+            carta.resumoCartaCampo();
+        }
+    }
+
+    public boolean verificaTamanho(){
+        if(this.campo.size()==0) {
+            System.out.println("Seu campo está vazio!!");
+            return false;
+        }
+        return true;
     }
 
     public void fortalecerUnidade(String nome, int n, int m){

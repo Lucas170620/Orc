@@ -64,16 +64,24 @@ public class Rodada{
     }
 
     public void realizarAcao(){
-        if(jogador1.ehAtacante()) jogador1.realizarAcao();
-        else jogador2.realizarAcao();
+        if(jogador1.ehAtacante())
+            jogador1.realizarAcao();
+        else
+            jogador2.realizarAcao();
     }
 
     public void mostrarResumo(){
+        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+        System.out.println("RESUMO DA RODADA ATUAL");
+        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+
         System.out.println("Rodada "+rodadas);
         System.out.println("Resumo Jogador 1: ");
         jogador1.mostrarResumo();
         System.out.println("Resumo Jogador 2: ");
         jogador2.mostrarResumo();
+        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+
 
     }
 }
