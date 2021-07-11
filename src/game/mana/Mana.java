@@ -29,6 +29,7 @@ public class Mana{
         else return false;
     }
 
+
     public void zerarMana() {
         quantidadeDeMana = 0;
     }

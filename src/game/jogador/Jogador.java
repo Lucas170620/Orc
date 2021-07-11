@@ -1,6 +1,7 @@
 package game.jogador;
 
 import error.EndGameException;
+import game.Combate;
 import game.Efeito;
 import game.mana.Mana;
 import game.mana.ManaCristalizada;
@@ -52,6 +53,7 @@ public class Jogador{
                 mana.adicionarMana(new Mana(rodada));
                 posicaoDeCombate = PosicaoDeCombate.DEFENSOR;
                 break;
+
             case DEFENSOR:
                 mana.zerarMana();
                 mana.adicionarMana(new Mana(rodada));
@@ -105,6 +107,11 @@ public class Jogador{
         mao.topDeck(deck);
     }
 
+    public void mataZerados(){
+        zonaMonstro.matarOsNegativos();
+    }
+
+
     public void comecarJogo(Jogador adversario) {
         this.adversario = adversario;
         int quantidade;
@@ -136,8 +143,14 @@ public class Jogador{
             Efeitos resolverEfeito = efeito.resolverEfeito();
             switch (resolverEfeito){
                 case ZERA_PODER:
+                    System.out.println("Zerando Poder de unidade inimiga!");
+                    System.out.println("Passe o nome da unidade:");
+
+                    adversario.enfraqueceUnidade();
                     break;
                 case ATACA_TODOS:
+                    System.out.println("Fortalecendo todas as Unidades!");
+                    zonaMonstro.fortalecerTodasUnidades(efeito.n(),efeito.m());
                     break;
                 case ATACAR_O_NEXUS:
                     adversario.sofrerDano(carta.mostrarPoder());
@@ -148,9 +161,22 @@ public class Jogador{
                 case COMBATE_IMEDIATO:
                     break;
                 case CURAR_UNIDADE_ALIADA:
+                    ////////////////CURAR///////////////////
+                    System.out.println("Qual Unidade você quer curar?");
+                    nome = leitor.next();
+                    while (verificador){
+                        try {
+                            verificador =false;
+                            zonaMonstro.curarUnidade(nome);
+                        }catch (IllegalArgumentException e){
+                            System.out.println(e.getMessage());
+                            nome= leitor.next();
+                            verificador =true;
+                        }
+                    }
                     break;
                 case FORTALECER_UMA_UNIDADE:
-                    System.out.println("Qual Unidade você quer fortalecer");
+                    System.out.println("Qual Unidade você quer fortalecer?");
                     nome = leitor.next();
                     while (verificador){
                         try {
@@ -161,20 +187,43 @@ public class Jogador{
                             nome= leitor.next();
                             verificador =true;
                         }
-
-
                     }
-
                     break;
                 case FORTACELER_UNIDADES_ALIADAS:
+                    System.out.println("Fortalecendo todas as Unidades!");
+                    zonaMonstro.fortalecerTodasUnidades(efeito.n(),efeito.m());
                     break;
                 case AO_SER_DESTUIDO_COMPRA_CARTA:
                     break;
                 case DESTRUIR_MOSTRO_E_COLOCAR_NA_MAO:
                     break;
                 case CRIA_BARREIRA_DE_PROTECAO_DE_DANO:
+                    System.out.println("Qual Unidade você quer proteger com Barreira?");
+                    nome = leitor.next();
+                    while (verificador){
+                        try {
+                            verificador =false;
+                            zonaMonstro.criarBarreira(nome);
+                        }catch (IllegalArgumentException e){
+                            System.out.println(e.getMessage());
+                            nome= leitor.next();
+                            verificador =true;
+                        }
+                    }
                     break;
                 case DOBRAR_ATAQUE_E_DEFESA_UNIDADE_ALIADA:
+                    System.out.println("Qual Unidade você quer dobrar atributos?");
+                    nome = leitor.next();
+                    while (verificador){
+                        try {
+                            verificador =false;
+                            zonaMonstro.dobrar(nome);
+                        }catch (IllegalArgumentException e){
+                            System.out.println(e.getMessage());
+                            nome= leitor.next();
+                            verificador =true;
+                        }
+                    }
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + resolverEfeito);
@@ -184,6 +233,7 @@ public class Jogador{
 
 
     public void mostrarResumo(){
+        nexus.nexusVida();
         System.out.println("Campo do Jogador: ");
         zonaMonstro.mostrarCampo();
     }
@@ -193,12 +243,27 @@ public class Jogador{
         mao.mostrarMaoCompleta();
     }
 
-    public void mostrarManaJogador(){
-        System.out.println("Mana Atual:" + this.mana);
-        mao.mostrarMaoCompleta();
+    public void enfraqueceUnidade(){
+        String nome;
+        boolean verificador = true;
+        nome = leitor.next();
+        while (verificador){
+            try {
+                verificador =false;
+                zonaMonstro.zerarPoder(nome);
+            }catch (IllegalArgumentException e){
+                System.out.println(e.getMessage());
+                nome= leitor.next();
+                verificador =true;
+            }
+        }
+
     }
 
 
+    public Carta preparaCarta(String nome) {
+        return zonaMonstro.recrutaCarta(nome);
+    }
 
     public boolean ehAtacante() {
         if(posicaoDeCombate.compareTo(PosicaoDeCombate.ATACANTE)==0) return true;
@@ -221,6 +286,7 @@ public class Jogador{
         while(verificador){
             try {
                 carta = mao.invocarCarta(unidade, mana);
+                this.aplicarEfeitos(carta);
                 verificador = false;
                 System.out.println("Carta Invocada Com Sucesso");
             }catch (IllegalArgumentException e){
@@ -246,7 +312,9 @@ public class Jogador{
 
     public void realizarAcao(){
         Integer ler;
+        Combate combate= new Combate(this,adversario);
         System.out.println("JOGADA DE JOGADOR: "+jogador);
+        System.out.println(this.mana.toString());
 
         System.out.println("1-Deseja Ver sua Mão?");
         System.out.println("1-Sim");
@@ -265,7 +333,6 @@ public class Jogador{
         System.out.println("1-Deseja Invocar Monstro");
         System.out.println("2-Deseja Invocar Feitiço");
         System.out.println("3-Entrar Em Combate:");
-
         System.out.println("Digite qualquer outro botão para não fazer nada!");
         System.out.println("***************************************");
 
@@ -290,15 +357,17 @@ public class Jogador{
                 }
                 break;
             case 3:
+                System.out.println("Por favor tente novamente");
                 if(this.zonaMonstro.verificaTamanho()){
                     System.out.println("Por favor tente novamente");
                     this.realizarAcao();
+                }else{
+                    combate.Combater();
                 }
                 break;
 
         }
-        if(jogador == 1) jogador = 2;
-        else jogador = 1;
+        adversario.mataZerados();
     }
 
     protected void ativarFeitico() {

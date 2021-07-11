@@ -24,7 +24,38 @@ public class Feitico extends Carta{
     }
 
     @Override
+    public void reforcarCarta(int n, int m) {}
+
+    @Override
+    public void atacarCarta(Carta carta) {}
+
+    @Override
+    public void receberAtaque(int poder) {}
+
+    @Override
+    public void dobra() { }
+
+    @Override
+    public void bloqueia() { }
+
+    @Override
+    public void cura() { }
+
+    @Override
+    public void zerar() {
+
+    }
+
+    @Override
+    public boolean estaMorta() {
+        return false;
+    }
+
+
+    @Override
     public TipoDeCarta tipo() {
         return TipoDeCarta.FEITICO;
     }
+
+
 }

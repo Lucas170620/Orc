@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Carta{
-    private String nome;
+    protected String nome;
     private Mana mana;
     private List<Efeito> efeitos = new ArrayList();
 
@@ -52,6 +52,7 @@ public abstract class Carta{
     public void resumoCartaCampo(){
         System.out.println("--------------------");
         System.out.println("O nome da carta:");
+        System.out.println("\t"+nome);
         System.out.println("\tO tipo da carta é:");
         mostrarTipo();
         System.out.println("--------------------");
@@ -78,9 +79,21 @@ public abstract class Carta{
         return mana;
     }
 
-    public void reforcarCarta(int n, int m){
+    public abstract void reforcarCarta(int n, int m);
 
-    }
+    public abstract void atacarCarta(Carta carta);
 
     public abstract TipoDeCarta tipo();
+
+    public abstract void receberAtaque(int poder);
+
+    public abstract void dobra();
+
+    public abstract void bloqueia();
+
+    public abstract void cura();
+
+    public abstract void zerar();
+
+    public abstract boolean estaMorta();
 }
