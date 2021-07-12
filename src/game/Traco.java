@@ -1,6 +1,5 @@
 package game;
-import game.baralho.Carta;
-import game.enums.Efeitos;
+
 import game.enums.Tracos;
 
 public class Traco {
@@ -37,15 +36,4 @@ public class Traco {
     }
 
 
-//    Tracos resolverTraco(){
-//        return traco;
-//    }
-//
-//    int n(){
-//        return n;
-//    }
-//
-//    int m(){
-//        return m;
-//    }
 }
