@@ -92,11 +92,21 @@ public class ZonaMonstro{
         }
     }
 
-    public void matarOsNegativos() {
+    public Boolean matarOsNegativos() {
+        boolean flag=false;
         for (int i=0;i<campo.size();i++){
-            if(campo.get(i).estaMorta()){
+            if(campo.get(i).estaMorta() &&campo.get(i).temBonusCarta()){
                 campo.remove(campo.get(i));
+                flag=true;
             }
+        }
+        return flag;
+    }
+
+
+    public void enfraquece(int n, int m) {
+        for (Carta carta:campo){
+            carta.enfraqueceCarta(n,m);
         }
     }
 }

@@ -13,8 +13,8 @@ public class Monstro extends Carta {
     private int vidaMax;
     private int poder;
     private List<Traco> tracos = new ArrayList();
-    private boolean barreira=false;
-
+    private boolean barreira = false;
+    private boolean bonusCarta = false;
 
 
     public Monstro(String nome, int mana, int poder, int vida) {
@@ -41,21 +41,26 @@ public class Monstro extends Carta {
     @Override
     public void atacarCarta(Carta carta) {
         System.out.println("--------------------------------");
-        System.out.println("a Carta "+this.nome+"Atacou:");
+        System.out.println("a Carta " + this.nome + "Atacou:");
+        this.bonusCarta=true;
         carta.resumoCurtoCarta();
         carta.receberAtaque(this.poder);
+    }
+    @Override
+
+    public boolean temBonusCarta() {
+        return bonusCarta;
     }
 
 
     public void receberAtaque(int dano) {
-        if(this.barreira){
+        if (this.barreira) {
             System.out.println("Barreira de Monstro Destruida!");
-            barreira=false;
-        }else {
-            this.vida=this.vida-dano;
+            barreira = false;
+        } else {
+            this.vida = this.vida - dano;
         }
     }
-
 
 
     @Override
@@ -63,7 +68,7 @@ public class Monstro extends Carta {
         return null;
     }
 
-
+    @Override
     public boolean possuiElusivo() {
         for (int i = 0; i < this.tracos.size(); ++i) {
             if (this.tracos.get(i).verificaElusividade()) {
@@ -72,7 +77,7 @@ public class Monstro extends Carta {
         }
         return false;
     }
-
+    @Override
     public boolean possuiDuploAtaque() {
         for (int i = 0; i < this.tracos.size(); ++i) {
             if (this.tracos.get(i).verificaAtaquesDuplos()) {
@@ -81,17 +86,18 @@ public class Monstro extends Carta {
         }
         return false;
     }
-
-    public void possuiFuria(int n,int m) {
+    @Override
+    public void possuiFuria(int n, int m) {
         for (int i = 0; i < this.tracos.size(); ++i) {
             if (this.tracos.get(i).verificaFuria()) {
-                this.vida=this.vida+n;
-                this.poder=this.vida+m;
+                this.vida = this.vida + n;
+                this.poder = this.vida + m;
             }
-        }}
+        }
+    }
 
-@Override
-    public void reforcarCarta(int n, int m){
+    @Override
+    public void reforcarCarta(int n, int m) {
         poder = poder + n;
         vida = vida + m;
 
@@ -99,42 +105,40 @@ public class Monstro extends Carta {
 
     @Override
     public void dobra() {
-        poder = 2*poder;
-        vidaMax=2*vidaMax;
-        vida = 2*vida;
+        poder = 2 * poder;
+        vidaMax = 2 * vidaMax;
+        vida = 2 * vida;
 
     }
 
     @Override
     public void bloqueia() {
-        this.barreira=true;
+        this.barreira = true;
     }
 
     @Override
     public void cura() {
-        this.vida=vidaMax;
+        this.vida = vidaMax;
     }
 
     @Override
     public void zerar() {
-        this.poder=0;
+        this.poder = 0;
     }
 
     @Override
     public boolean estaMorta() {
-       if(this.vida<=0)
-        return true;
-       else
-           return false;
+        if (this.vida <= 0)
+            return true;
+        else
+            return false;
     }
 
+    @Override
+    public void enfraqueceCarta(int n, int m) {
+        poder = poder - n;
+        vida = vida - m;
 
-    public void adicionarTraco(Tracos traco, int n, int m) {
-        Traco novoTraco = new Traco(traco,n,m);
-    }
-    public void adicionarTraco(Tracos traco) {
-        Traco novoTraco = new Traco(traco);
-        tracos.add(novoTraco);
     }
 
 

@@ -26,7 +26,7 @@ public class Combate {
         return n;
     }
 
-    public void Combater() {
+    public void combater() {
         Integer contador = 0;
         Integer ler;
         String unidade;
@@ -62,6 +62,7 @@ public class Combate {
 
         verificador = true;
         for (int i = 0; i < atacantes.size(); i++) {
+            boolean elusivo = this.atacantes.get(i).possuiElusivo();
             Carta carta;
             System.out.println("DECLARAÇÃO DE DEFENSORES");
             System.out.println("Defendendo contra:" );
@@ -77,8 +78,12 @@ public class Combate {
                     System.out.println("Entre com o nome do seu defensor!" );
                     unidade = leitor.nextLine();
                     carta=j2.preparaCarta(unidade);
-                    if(!(carta==null)) {
+                    if(!(carta==null)  ||  !(elusivo && !carta.possuiElusivo())) {
                         this.atacantes.get(i).atacarCarta(carta);
+                        if( this.atacantes.get(i).possuiDuploAtaque()) {
+                            this.atacantes.get(i).atacarCarta(carta);
+                        }
+                        this.atacantes.get(i).possuiFuria(1,1);
                         verificador = false;
                         this.atacantes.get(i).resumoCurtoCarta();
 

@@ -107,8 +107,8 @@ public class Jogador{
         mao.topDeck(deck);
     }
 
-    public void mataZerados(){
-        zonaMonstro.matarOsNegativos();
+    public Boolean mataZerados(){
+        return zonaMonstro.matarOsNegativos();
     }
 
 
@@ -145,12 +145,11 @@ public class Jogador{
                 case ZERA_PODER:
                     System.out.println("Zerando Poder de unidade inimiga!");
                     System.out.println("Passe o nome da unidade:");
-
                     adversario.enfraqueceUnidade();
                     break;
                 case ATACA_TODOS:
-                    System.out.println("Fortalecendo todas as Unidades!");
-                    zonaMonstro.fortalecerTodasUnidades(efeito.n(),efeito.m());
+                    System.out.println("Enfraquece Todas As Cartas!");
+                    adversario.enfraquecerTodasUnidades(efeito.n(),efeito.m());
                     break;
                 case ATACAR_O_NEXUS:
                     adversario.sofrerDano(carta.mostrarPoder());
@@ -158,10 +157,10 @@ public class Jogador{
                 case DANO_N_AO_NEXUS:
                     adversario.sofrerDano(efeito.n());
                     break;
-                case COMBATE_IMEDIATO:
+                case COMBATE_IMEDIATO:// A Terminar
                     break;
                 case CURAR_UNIDADE_ALIADA:
-                    ////////////////CURAR///////////////////
+
                     System.out.println("Qual Unidade você quer curar?");
                     nome = leitor.next();
                     while (verificador){
@@ -229,6 +228,10 @@ public class Jogador{
                     throw new IllegalStateException("Unexpected value: " + resolverEfeito);
             }
         }
+    }
+
+    private void enfraquecerTodasUnidades(int n, int m) {
+        zonaMonstro.enfraquece(n,m);
     }
 
 
@@ -362,12 +365,13 @@ public class Jogador{
                     System.out.println("Por favor tente novamente");
                     this.realizarAcao();
                 }else{
-                    combate.Combater();
+                    combate.combater();
                 }
                 break;
 
         }
-        adversario.mataZerados();
+        if(adversario.mataZerados())
+            mao.topDeck(deck);
     }
 
     protected void ativarFeitico() {

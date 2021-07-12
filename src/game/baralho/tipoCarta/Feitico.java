@@ -51,6 +51,31 @@ public class Feitico extends Carta{
         return false;
     }
 
+    @Override
+    public void enfraqueceCarta(int n, int m) {
+
+    }
+
+    @Override
+    public boolean temBonusCarta() {
+        return false;
+    }
+
+    @Override
+    public boolean possuiDuploAtaque() {
+        return false;
+    }
+
+    @Override
+    public void possuiFuria(int n, int m ) {
+
+    }
+
+    @Override
+    public boolean possuiElusivo() {
+        return false;
+    }
+
 
     @Override
     public TipoDeCarta tipo() {
